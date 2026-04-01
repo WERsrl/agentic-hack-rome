@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic Hack Rome: Hacker Manual</title>
+  <meta name="description" content="50 builders. 5 hours. AI agents for Rome. One-day hackathon at Urbe Hub, April 11, 2026.">
+  <meta property="og:title" content="Agentic Hack Rome — Hacker Manual">
+  <meta property="og:description" content="50 builders. 5 hours. AI agents for Rome.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink:       #CC2B5E;
+      --purple:     #753A88;
+      --gradient:   linear-gradient(135deg, #CC2B5E 0%, #753A88 100%);
+      --bg:         #F8F6EE;
+      --bg-alt:     #FFFFFF;
+      --card:       #FFFFFF;
+      --card-alt:   #F8F6EE;
+      --border:     #E2DDD4;
+      --border-mid: #D4CFC5;
+      --text:       #3a3a3a;
+      --muted:      #6B7280;
+      --heading:    #000000;
+      --green:      #16a34a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      font-size: 1.0625rem;
+    }
+
+    h1, h2, h3, h4 { color: var(--heading); line-height: 1.2; }
+    h1 { font-weight: 900; }
+    h2 { font-weight: 700; font-size: 2.25rem; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    h3 { font-weight: 600; font-size: 1.1rem; }
+
+    a { color: var(--pink); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.75; }
+    a:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 4px; }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 0; }
+    section.alt { background: var(--bg-alt); }
+
+    .label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--pink);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-intro {
+      color: var(--text);
+      max-width: 580px;
+      margin-top: 0.75rem;
+      margin-bottom: 2.75rem;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(117,58,136,0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .nav.scrolled {
+      background: rgba(248,246,238,0.95);
+      border-bottom-color: var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: opacity 0.2s, color 0.3s;
+    }
+    .nav-logo:hover { opacity: 0.75; }
+    .nav-logo span { color: #fff; }
+    .nav.scrolled .nav-logo { color: var(--heading); }
+    .nav.scrolled .nav-logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-links a {
+      display: block;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav.scrolled .nav-links a { color: var(--muted); }
+    .nav.scrolled .nav-links a:hover, .nav.scrolled .nav-links a.active { color: var(--heading); background: rgba(0,0,0,0.05); }
+    .nav-links a:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 56px;
+      background: radial-gradient(112% 150% at 0% 100%, #CC2B5E 0%, #753A88 100%);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 5px 16px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      font-weight: 900;
+      color: #F8F6EE;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-meta {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2.75rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 36px;
+      background: #fff;
+      color: var(--pink);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .btn-primary:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(255,255,255,0.25); opacity: 1; }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      background: transparent;
+    }
+    .btn-ghost:hover { opacity: 0.75; }
+    .btn-ghost:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+    /* ── Timeline ── */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      position: relative;
+      margin-top: 2.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: var(--border-mid);
+    }
+
+    .timeline-node {
+      text-align: center;
+      position: relative;
+      padding-top: 26px;
+    }
+
+    .timeline-node::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gradient);
+      border: 2px solid var(--bg);
+      z-index: 2;
+    }
+
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 10px;
+    }
+
+    .timeline-time {
+      font-weight: 700;
+      font-size: 1.4rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .timeline-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 639px) {
+      .timeline {
+        grid-template-columns: 1fr;
+        padding-left: 28px;
+        gap: 0;
+      }
+      .timeline::before {
+        top: 0; bottom: 0;
+        left: 6px; right: auto;
+        width: 1px; height: auto;
+      }
+      .timeline-node { padding-top: 0; padding-bottom: 16px; text-align: left; }
+      .timeline-node::before { top: 9px; left: -22px; }
+      .timeline-card { padding: 14px 18px; }
+    }
+
+    /* ── Tracks Accordion ── */
+    .tracks-intro-banner {
+      background: rgba(204,43,94,0.04);
+      border: 1px solid rgba(204,43,94,0.18);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 2.5rem;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .tracks-intro-banner svg { flex-shrink: 0; margin-top: 2px; color: var(--pink); }
+
+    .tracks-intro-banner p {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .tracks-intro-banner strong { color: var(--heading); }
+
+    .tracks-accordion { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+
+    .track-item { border-bottom: 1px solid var(--border); position: relative; }
+    .track-item:last-child { border-bottom: none; }
+    .track-item.is-open { border-left: 3px solid var(--pink); }
+    .track-item.is-open .track-trigger { padding-left: 21px; }
+
+    .track-trigger {
+      width: 100%;
+      background: var(--card);
+      border: none;
+      cursor: pointer;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .track-trigger:hover { background: var(--card-alt); }
+    .track-trigger:focus-visible { outline: 2px solid var(--pink); outline-offset: -2px; }
+
+    .track-trigger-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .track-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .track-item:nth-child(1) .track-dot { background: #CC2B5E; }
+    .track-item:nth-child(2) .track-dot { background: #753A88; }
+    .track-item:nth-child(3) .track-dot { background: #d97706; }
+    .track-item:nth-child(4) .track-dot { background: #0ea5e9; }
+
+    .track-trigger-label { display: flex; flex-direction: column; gap: 2px; }
+
+    .track-trigger-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--heading);
+    }
+
+    .track-trigger-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .track-chevron {
+      flex-shrink: 0;
+      color: var(--muted);
+      transition: transform 0.3s ease, color 0.2s;
+    }
+
+    .track-trigger[aria-expanded="true"] .track-chevron {
+      transform: rotate(180deg);
+      color: var(--pink);
+    }
+
+    .track-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+      background: var(--bg);
+    }
+
+    .track-body.open {
+      opacity: 1;
+    }
+
+    .track-body-inner {
+      padding: 28px 24px 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .track-problem {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+      max-width: 720px;
+    }
+
+    .track-good {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.75rem;
+      padding-left: 14px;
+      border-left: 2px solid var(--border-mid);
+      line-height: 1.65;
+      max-width: 620px;
+    }
+
+    .track-sublabel {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+
+    .track-ideas {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .track-ideas li {
+      font-size: 0.95rem;
+      color: var(--text);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .track-ideas li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .track-apis {
+      margin-top: 20px;
+      padding: 16px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .track-apis .track-sublabel { margin-top: 0; }
+
+    .track-apis ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .track-apis li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .track-apis li a { font-size: 0.83rem; }
+
+    .track-apis code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      background: rgba(0,0,0,0.05);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: #16a34a;
+    }
+
+    /* ── Rules ── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+    }
+
+    .rule-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rule-icon-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(204,43,94,0.08);
+      border: 1px solid rgba(204,43,94,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--pink);
+    }
+
+    .rule-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--heading);
+    }
+
+    .rule-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Judging ── */
+    .judging-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 639px) { .judging-grid { grid-template-columns: 1fr; } }
+
+    .judging-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--pink);
+      border-radius: 10px;
+      padding: 26px;
+      transition: box-shadow 0.2s;
+    }
+
+    .judging-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .judging-pct {
+      font-weight: 700;
+      font-size: 2.25rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2px;
+      line-height: 1;
+    }
+
+    .judging-card h3 { margin-bottom: 14px; margin-top: 4px; }
+
+    .judging-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+    .judging-card li {
+      font-size: 0.93rem;
+      color: var(--muted);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .judging-card li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    /* ── Mentors ── */
+    .mentors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .mentor-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .mentor-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+
+    .mentor-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .mentor-name {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--heading);
+    }
+
+    .mentor-company {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── Perks / Prizes ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .perk-card, .prize-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .perk-card:hover, .prize-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    .prize-card.featured {
+      background: linear-gradient(135deg, rgba(204,43,94,0.05) 0%, rgba(117,58,136,0.05) 100%);
+      border-color: rgba(204,43,94,0.3);
+    }
+
+    .card-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    .badge-all { background: rgba(204,43,94,0.12); color: var(--pink); }
+    .badge-winner { background: var(--gradient); color: #fff; }
+    .badge-best { background: rgba(117,58,136,0.2); color: #b87ad4; }
+
+    .perk-card h3, .prize-card h3 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .perk-card p, .prize-card p {
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── Submission ── */
+    .submission-list {
+      list-style: none;
+      padding: 0;
+      max-width: 620px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .submission-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .submission-list li:last-child { border-bottom: none; }
+
+    .submission-num {
+      font-weight: 700;
+      font-size: 1rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      min-width: 20px;
+      padding-top: 1px;
+    }
+
+    .submission-text { font-size: 0.92rem; line-height: 1.55; }
+    .submission-text strong { color: var(--heading); }
+
+    .deadline-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+      background: rgba(204,43,94,0.05);
+      border: 1px solid rgba(204,43,94,0.2);
+      border-radius: 8px;
+      padding: 12px 20px;
+      color: var(--pink);
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    /* ── Agent Layer ── */
+    .agent-section { background: #0a0a0a; border-top: 1px solid #1e1e1e; border-bottom: 1px solid #1e1e1e; }
+    .agent-section .label { color: #4ade80; }
+
+    .agent-box {
+      background: #111111;
+      border: 1px solid #1a3a1a;
+      border-radius: 12px;
+      padding: 40px 32px;
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .agent-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--pink), var(--green), var(--pink));
+    }
+
+    .agent-box h2 { font-family: monospace; font-size: 1.5rem; color: var(--green); margin-bottom: 0.75rem; }
+    .agent-subtitle { font-size: 0.97rem; color: var(--text); margin-bottom: 2rem; max-width: 560px; }
+
+    .step-label {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      margin-top: 22px;
+    }
+    .step-label:first-of-type { margin-top: 0; }
+
+    pre.code-block {
+      background: #070707;
+      border: 1px solid #1a3a1a;
+      border-radius: 8px;
+      padding: 16px 20px;
+      overflow-x: auto;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.83rem;
+      line-height: 1.75;
+      color: var(--green);
+    }
+
+    pre.code-block .comment { color: #4b5563; }
+
+    .cursor-note {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-top: 8px;
+      font-family: monospace;
+    }
+
+    .agent-caps { margin-top: 28px; padding-top: 22px; border-top: 1px solid #1a3a1a; }
+    .agent-caps h3 { font-family: monospace; color: var(--green); font-size: 0.95rem; margin-bottom: 14px; }
+    .agent-caps ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .agent-caps li { padding-left: 18px; position: relative; font-size: 0.9rem; color: var(--text); }
+    .agent-caps li::before { content: '$'; position: absolute; left: 0; color: var(--green); font-family: monospace; }
+
+    /* ── Logistics ── */
+    .logistics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .logistics-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .logistics-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+    }
+
+    .logistics-card h3 { font-size: 0.95rem; margin: 0; }
+    .logistics-card p, .logistics-card a { font-size: 0.93rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .footer-brand span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    footer a { color: var(--muted); font-size: 0.82rem; }
+    footer a:hover { color: var(--pink); opacity: 1; }
+
+    @media (max-width: 767px) {
+      section { padding: 64px 0; }
+      h2 { font-size: 1.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Agentic Hack <span>Rome</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#tracks">Tracks</a></li>
+        <li><a href="#rules">Rules</a></li>
+        <li><a href="#mentors">Mentors</a></li>
+        <li><a href="#perks">Perks</a></li>
+        <li><a href="#prizes">Prizes</a></li>
+        <li><a href="#submit">Submit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content container">
+      <span class="hero-eyebrow">April 11, 2026 &nbsp;·&nbsp; Urbe Hub, Testaccio, Rome</span>
+      <h1>Agentic Hack Rome</h1>
+      <p class="hero-tagline">50 builders. 5 hours. Build for Rome.</p>
+      <p class="hero-meta">AI agents that solve real problems for the city and the people who live here.</p>
+      <div class="hero-ctas">
+        <a href="#tracks" class="btn-primary">See the tracks</a>
+        <a href="#submit" class="btn-ghost">How to submit &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule" class="alt">
+    <div class="container">
+      <span class="label">Schedule</span>
+      <h2>How the day goes</h2>
+      <div class="timeline">
+        <div class="timeline-node">
+          <div class="timeline-card">
+            <div class="timeline-time">10:00</div>
+            <div class="timeline-label">Doors open</div>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-card">
+            <div class="timeline-time">10:30</div>
+            <div class="timeline-label">Opening and briefing</div>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-card">
+            <div class="timeline-time">11:00</div>
+            <div class="timeline-label">Hacking starts (5 hours)</div>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-card">
+            <div class="timeline-time">16:00</div>
+            <div class="timeline-label">Project pitches (until 17:30)</div>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-card">
+            <div class="timeline-time">17:30</div>
+            <div class="timeline-label">Awards &amp; Aperitivo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge Tracks -->
+  <section id="tracks">
+    <div class="container">
+      <span class="label">Challenge Tracks</span>
+      <h2>Inspiration, not constraints.</h2>
+      <p class="section-intro">You don't have to follow these tracks. Build whatever you want, as long as it is genuinely useful for Rome and the people who live here. The tracks are starting points: real problems, datasets, example ideas. Use them if they spark something.</p>
+
+      <div class="tracks-intro-banner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p><strong>The one thing that matters:</strong> build something that makes life better for people in this city. Click a track to explore problems, ideas, and APIs.</p>
+      </div>
+
+      <div class="tracks-accordion" role="list">
+
+        <!-- Muoviti -->
+        <div class="track-item" role="listitem">
+          <button class="track-trigger" aria-expanded="false" aria-controls="track-muoviti">
+            <div class="track-trigger-left">
+              <span class="track-dot" aria-hidden="true"></span>
+              <div class="track-trigger-label">
+                <span class="track-trigger-name">Muoviti</span>
+                <span class="track-trigger-sub">Mobility: transport, infrastructure, urban flow</span>
+              </div>
+            </div>
+            <svg class="track-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="track-body" id="track-muoviti" role="region">
+            <div class="track-body-inner">
+              <p class="track-problem">Rome's public transport is unreliable and hard to navigate for commuters, and the challenge runs deeper. ATAC, Rome's transport authority, manages a large fleet with incomplete visibility. Fare evasion drains revenue across the metro system. Infrastructure failures are reactive, not predicted. Understanding how people actually move through the city still requires expensive, slow surveys. AI can change this from both ends: for the passenger navigating the system and for the operators running it.</p>
+              <p class="track-good">What good looks like: an agent that either monitors transport status for commuters and suggests real-time alternatives, or gives ATAC and city operators sharper visibility. Where fares are being evaded, what infrastructure is about to fail, how people actually move through Rome.</p>
+
+              <div class="track-sublabel">Example ideas: passenger-facing</div>
+              <ul class="track-ideas">
+                <li>An agent that monitors your daily commute route and alerts you before disruptions happen, suggesting real-time alternatives</li>
+                <li>A disruption detection agent that aggregates ATAC data, social media reports, and news to build a real-time reliability map</li>
+                <li>An agent that optimizes multi-modal routes (bus + metro + scooter) based on live conditions, not just schedules</li>
+              </ul>
+
+              <div class="track-sublabel">Example ideas: operator-facing</div>
+              <ul class="track-ideas">
+                <li>A fare evasion detection agent that analyzes validation patterns across metro stations and bus lines to flag high-risk locations and time windows</li>
+                <li>A predictive maintenance agent that models failure probability for buses and metro infrastructure from historical breakdown data and service logs</li>
+                <li>An Origin-Destination estimation agent that reconstructs how people actually move through Rome using GTFS data and network topology</li>
+              </ul>
+
+              <div class="track-apis">
+                <div class="track-sublabel">APIs &amp; Datasets</div>
+                <ul>
+                  <li>Roma Mobilita / ATAC GTFS-RT: real-time positions, trip updates, service alerts. Static GTFS: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (search "GTFS"). Docs: <a href="https://developers.google.com/transit/gtfs-realtime" target="_blank" rel="noopener">GTFS-RT spec</a></li>
+                  <li>Muoversi a Roma: <a href="https://muovi.roma.it" target="_blank" rel="noopener">muovi.roma.it</a> (official mobility portal)</li>
+                  <li>Roma Open Data: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (transport incidents, service reports, infrastructure data)</li>
+                  <li>OpenStreetMap Overpass API: <a href="https://overpass-api.de/api/interpreter" target="_blank" rel="noopener">overpass-api.de</a> (road network, bike lanes, transit stops)</li>
+                  <li>ATAC Open Data: historical service data, incident logs, validation counts. <a href="https://www.atac.roma.it" target="_blank" rel="noopener">atac.roma.it</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Naviga -->
+        <div class="track-item" role="listitem">
+          <button class="track-trigger" aria-expanded="false" aria-controls="track-naviga">
+            <div class="track-trigger-left">
+              <span class="track-dot" aria-hidden="true"></span>
+              <div class="track-trigger-label">
+                <span class="track-trigger-name">Naviga</span>
+                <span class="track-trigger-sub">Tourism: cultural heritage, experiences, logistics</span>
+              </div>
+            </div>
+            <svg class="track-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="track-body" id="track-naviga" role="region">
+            <div class="track-body-inner">
+              <p class="track-problem">Rome has one of the richest cultural heritages in the world, but navigating it is a mess. Tourist info is fragmented, ticket systems are separate for every venue, and most visitors follow the same overcrowded paths while hidden gems go unseen. No tool understands your interests and acts on them.</p>
+              <p class="track-good">What good looks like: an agent that knows what you care about, recommends experiences you'd actually enjoy, and handles the logistics -- booking tickets, suggesting timing to avoid crowds, building a personalized itinerary that goes beyond the obvious.</p>
+
+              <div class="track-sublabel">Example ideas</div>
+              <ul class="track-ideas">
+                <li>A personal cultural concierge agent that learns your interests, suggests hidden Rome experiences, and books tickets for you</li>
+                <li>An agent that monitors ticket availability for popular sites (Colosseum, Vatican, Borghese) and auto-books when slots open</li>
+                <li>A neighborhood discovery agent that builds walking tours based on your interests (street art, ancient ruins, food markets, architecture)</li>
+              </ul>
+
+              <div class="track-apis">
+                <div class="track-sublabel">APIs &amp; Datasets</div>
+                <ul>
+                  <li>MiC (Ministero della Cultura): <a href="https://dati.beniculturali.it" target="_blank" rel="noopener">dati.beniculturali.it</a> (cultural heritage open data)</li>
+                  <li>OpenTripMap API: <a href="https://api.opentripmap.com/0.1/en/places/" target="_blank" rel="noopener">api.opentripmap.com</a> (POIs, cultural and tourist sites. Free tier: 1000 req/day)</li>
+                  <li>Wikidata SPARQL: <a href="https://query.wikidata.org/sparql" target="_blank" rel="noopener">query.wikidata.org</a> (structured data on Rome landmarks)</li>
+                  <li>Roma Capitale Tourism: <a href="https://www.turismoroma.it" target="_blank" rel="noopener">turismoroma.it</a> (official tourism portal)</li>
+                  <li>Google Places API: reviews, opening hours, photos (API key required)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sbriga -->
+        <div class="track-item" role="listitem">
+          <button class="track-trigger" aria-expanded="false" aria-controls="track-sbriga">
+            <div class="track-trigger-left">
+              <span class="track-dot" aria-hidden="true"></span>
+              <div class="track-trigger-label">
+                <span class="track-trigger-name">Sbriga</span>
+                <span class="track-trigger-sub">Bureaucracy: citizen-PA bridge, documents, appointments</span>
+              </div>
+            </div>
+            <svg class="track-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="track-body" id="track-sbriga" role="region">
+            <div class="track-body-inner">
+              <p class="track-problem">Dealing with Rome's public administration is painful. Simple tasks -- residency changes, permit requests, document renewals -- require navigating dozens of websites, downloading the wrong forms, calling offices that don't answer, and booking appointments months in advance. Citizens waste days on things that should take minutes.</p>
+              <p class="track-good">What good looks like: an agent that understands what you need, finds the right procedure, prepares the correct documents, and books the appointment for you. A bridge between the citizen and the PA that actually works.</p>
+
+              <div class="track-sublabel">Example ideas</div>
+              <ul class="track-ideas">
+                <li>A PA navigator agent: describe what you need in plain Italian, and it identifies the correct procedure, required documents, and the right office</li>
+                <li>A document preparation agent that fills out forms (autocertificazioni, richieste) from your personal data and checks them before submission</li>
+                <li>An appointment booking agent that monitors Roma Capitale's booking system and grabs slots when they open</li>
+              </ul>
+
+              <div class="track-apis">
+                <div class="track-sublabel">APIs &amp; Datasets</div>
+                <ul>
+                  <li>Roma Capitale Servizi Online: <a href="https://www.comune.roma.it/servizi" target="_blank" rel="noopener">comune.roma.it/servizi</a> — municipal services portal</li>
+                  <li>ANPR: <a href="https://www.anpr.interno.it" target="_blank" rel="noopener">anpr.interno.it</a> (national population registry, limited public API)</li>
+                  <li>Roma Capitale Open Data: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (municipal services, offices, districts)</li>
+                  <li>TuPassi: <a href="https://www.tupassi.it" target="_blank" rel="noopener">tupassi.it</a> (appointment booking for Rome public offices)</li>
+                  <li>INPS Services: <a href="https://www.inps.it" target="_blank" rel="noopener">inps.it</a> (social security services, limited API)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vivi -->
+        <div class="track-item" role="listitem">
+          <button class="track-trigger" aria-expanded="false" aria-controls="track-vivi">
+            <div class="track-trigger-left">
+              <span class="track-dot" aria-hidden="true"></span>
+              <div class="track-trigger-label">
+                <span class="track-trigger-name">Vivi</span>
+                <span class="track-trigger-sub">Neighborhoods: district life, local knowledge, community</span>
+              </div>
+            </div>
+            <svg class="track-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="track-body" id="track-vivi" role="region">
+            <div class="track-body-inner">
+              <p class="track-problem">Rome's neighborhoods (municipi) have distinct identities and needs, but no digital infrastructure to support them. Public space issues go unreported, small businesses can't compete with platforms, and community knowledge lives in WhatsApp groups that newcomers can't access.</p>
+              <p class="track-good">What good looks like: a district-level agent that connects residents to their neighborhood. Reporting issues, discovering local businesses, accessing community knowledge, and making the neighborhood work better for everyone.</p>
+
+              <div class="track-sublabel">Example ideas</div>
+              <ul class="track-ideas">
+                <li>A neighborhood reporting agent: snap a photo of a pothole, broken streetlight, or full dumpster, and the agent files the report to the right municipal office</li>
+                <li>A local business discovery agent for a specific neighborhood: finds shops, restaurants, artisans based on what you need, with real community knowledge</li>
+                <li>A community knowledge agent that aggregates local info (market schedules, pharmacy shifts, municipal office hours) and answers questions about your neighborhood</li>
+              </ul>
+
+              <div class="track-apis">
+                <div class="track-sublabel">APIs &amp; Datasets</div>
+                <ul>
+                  <li>Roma Capitale Open Data: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (green spaces, public services, waste collection, municipal boundaries)</li>
+                  <li>OpenStreetMap Overpass API: query shops, amenities, parks, infrastructure by neighborhood. Example: <code>[out:json];area["name"="Testaccio"]->.t;(node["shop"](area.t););out;</code></li>
+                  <li>AMA Roma: <a href="https://www.amaroma.it" target="_blank" rel="noopener">amaroma.it</a> (waste collection schedules, recycling info)</li>
+                  <li>Roma Capitale Segnalazioni: reporting systems for municipal issues</li>
+                  <li>Google Maps / Places API: business info, reviews, operating hours</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /tracks-accordion -->
+    </div>
+  </section>
+
+  <!-- Rules -->
+  <section id="rules" class="alt">
+    <div class="container">
+      <span class="label">Rules</span>
+      <h2>Keep it fair</h2>
+      <div class="rules-grid" style="margin-top: 2rem;">
+
+        <div class="rule-card">
+          <div class="rule-icon-wrap" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="rule-title">Teams of 1 to 3</div>
+          <div class="rule-desc">Solo is fine. Max 3 people per team.</div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-icon-wrap" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.18-4.96"/></svg>
+          </div>
+          <div class="rule-title">New projects only</div>
+          <div class="rule-desc">Pre-existing ideas OK. Pre-existing code is not.</div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-icon-wrap" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="rule-title">5 hours of building</div>
+          <div class="rule-desc">11:00 to 16:00. Lunch provided.</div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-icon-wrap" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="rule-title">Must use AI and agentic tooling</div>
+          <div class="rule-desc">In any form -- tool calling, orchestration, autonomous tasks.</div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-icon-wrap" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="rule-title">Useful for Rome</div>
+          <div class="rule-desc">The only constraint that truly matters.</div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-icon-wrap" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <div class="rule-title">Public GitHub repo</div>
+          <div class="rule-desc">Required and accessible at submission time.</div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-icon-wrap" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
+          <div class="rule-title">Video demo required</div>
+          <div class="rule-desc">1 to 2 minutes, recorded, submitted with the project.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Judging -->
+  <section id="judging">
+    <div class="container">
+      <span class="label">Judging</span>
+      <h2>Three pillars, equally weighted</h2>
+      <p class="section-intro">Use this to review your project before you pitch.</p>
+      <div class="judging-grid">
+        <div class="judging-card">
+          <div class="judging-pct">33%</div>
+          <h3>Idea &amp; Impact</h3>
+          <ul>
+            <li>Is it genuinely useful for Rome and the people living here?</li>
+            <li>Is the problem specific and grounded (not generic)?</li>
+            <li>Would real people or institutions actually use this?</li>
+          </ul>
+        </div>
+        <div class="judging-card">
+          <div class="judging-pct">33%</div>
+          <h3>Technical Execution</h3>
+          <ul>
+            <li>Smart use of AI agents, tool calling, APIs</li>
+            <li>Architectural thinking over code polish (it's 5 hours)</li>
+            <li>Good integration of available tools and datasets</li>
+          </ul>
+        </div>
+        <div class="judging-card">
+          <div class="judging-pct">33%</div>
+          <h3>Demo-readiness</h3>
+          <ul>
+            <li>Can you demo a working flow end-to-end?</li>
+            <li>An MVP that works beats a concept that crashes</li>
+            <li>Is the demo clear and understandable in under 2 minutes?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mentors -->
+  <section id="mentors" class="alt">
+    <div class="container">
+      <span class="label">Mentors</span>
+      <h2>On-site during building hours</h2>
+      <p class="section-intro">Find them between 11:00 and 16:00 for technical sanity checks, architecture feedback, or to pressure-test your idea.</p>
+      <div class="mentors-grid">
+        <div class="mentor-card">
+          <div class="mentor-avatar" aria-hidden="true">DG</div>
+          <div>
+            <div class="mentor-name">Domenico Gagliardi</div>
+            <div class="mentor-company">Kortix</div>
+          </div>
+        </div>
+        <div class="mentor-card">
+          <div class="mentor-avatar" aria-hidden="true">SS</div>
+          <div>
+            <div class="mentor-name">Simone Silvestri</div>
+            <div class="mentor-company">SylloTips</div>
+          </div>
+        </div>
+        <div class="mentor-card">
+          <div class="mentor-avatar" aria-hidden="true">DB</div>
+          <div>
+            <div class="mentor-name">Diego Berardi</div>
+            <div class="mentor-company">Exoid</div>
+          </div>
+        </div>
+        <div class="mentor-card">
+          <div class="mentor-avatar" aria-hidden="true">MP</div>
+          <div>
+            <div class="mentor-name">Marcello Politi</div>
+            <div class="mentor-company">Ethereum Foundation, dAI team</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perks -->
+  <section id="perks">
+    <div class="container">
+      <span class="label">Perks</span>
+      <h2>For every participant</h2>
+      <p class="section-intro">These are yours on event day regardless of how you finish. Tools to help you build faster and better.</p>
+      <div class="cards-grid">
+        <div class="perk-card">
+          <span class="card-badge badge-all">All Participants</span>
+          <h3>ElevenLabs Creator Tier</h3>
+          <p>1 month free. Voice AI for your agents: text-to-speech, voice cloning, conversational interfaces.</p>
+        </div>
+        <div class="perk-card">
+          <span class="card-badge badge-all">All Participants</span>
+          <h3>v0 by Vercel</h3>
+          <p>$30 free credits. AI-powered UI generation for rapid prototyping of React and Next.js interfaces.</p>
+        </div>
+        <div class="perk-card">
+          <span class="card-badge badge-all">All Participants</span>
+          <h3>Exoid Platform</h3>
+          <p>Free platform access. AI-powered data analysis and insight generation from datasets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prizes -->
+  <section id="prizes" class="alt">
+    <div class="container">
+      <span class="label">Prizes</span>
+      <h2>For the winners</h2>
+      <div class="cards-grid">
+        <div class="prize-card featured">
+          <span class="card-badge badge-winner">Winner</span>
+          <h3>1 Year Urbe Hub Membership</h3>
+          <p>Full access to Rome's builder hub for 12 months. Coworking, events, and community for every member of the winning team.</p>
+        </div>
+        <div class="prize-card">
+          <span class="card-badge badge-winner">Winner</span>
+          <h3>ElevenLabs Pro</h3>
+          <p>3 months Pro ($297/person). Upgraded voice AI for the winning team, on top of the base perk.</p>
+        </div>
+        <div class="prize-card">
+          <span class="card-badge badge-best">Best ElevenLabs Project</span>
+          <h3>ElevenLabs Scale</h3>
+          <p>3 months Scale ($990/person). For the project that makes the best use of ElevenLabs voice AI.</p>
+        </div>
+        <div class="prize-card">
+          <span class="card-badge badge-winner">Winner</span>
+          <h3>v0 by Vercel: Extra Credits</h3>
+          <p>Additional credits for the winning team on top of the base perk. Amount confirmed on event day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Submission -->
+  <section id="submit">
+    <div class="container">
+      <span class="label">Submission</span>
+      <h2>What to prepare</h2>
+      <p class="section-intro">Deadline: 16:00 sharp on April 11. Prepare these before you pitch.</p>
+      <ol class="submission-list">
+        <li>
+          <span class="submission-num">1</span>
+          <span class="submission-text"><strong>GitHub repo</strong> (public, mandatory). All code must be accessible at submission time.</span>
+        </li>
+        <li>
+          <span class="submission-num">2</span>
+          <span class="submission-text"><strong>Recorded video demo</strong> (1 to 2 minutes) -- for post-event publishing. Mandatory.</span>
+        </li>
+        <li>
+          <span class="submission-num">3</span>
+          <span class="submission-text"><strong>Live pitch on stage</strong> (1 to 2 minutes) -- separate from the video. This is how the judges evaluate you.</span>
+        </li>
+        <li>
+          <span class="submission-num">4</span>
+          <span class="submission-text"><strong>Submission form</strong>. Link provided on event day.</span>
+        </li>
+      </ol>
+      <div class="deadline-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Deadline: 16:00 sharp, April 11
+      </div>
+    </div>
+  </section>
+
+  <!-- Agent Layer -->
+  <section class="agent-section">
+    <div class="container">
+      <span class="label" style="color: var(--green);">The Agent Layer</span>
+      <div class="agent-box">
+        <h2>Your AI is invited too.</h2>
+        <p class="agent-subtitle">This documentation was designed for AI agents. Drop one file into your project and your AI coding assistant becomes your hackathon teammate.</p>
+
+        <div class="step-label">For Claude Code / Windsurf</div>
+        <pre class="code-block"><span class="comment"># Clone the repo</span>
+git clone https://github.com/urbe-hub/agentic-hack-rome
+
+<span class="comment"># Copy into your project</span>
+cp agentic-hack-rome/CLAUDE.md your-project/CLAUDE.md
+
+<span class="comment"># Start building. Your AI knows everything.</span></pre>
+
+        <p class="cursor-note">For Cursor: <code style="color:var(--green)">cp agentic-hack-rome/.cursorrules your-project/.cursorrules</code></p>
+
+        <div class="agent-caps">
+          <h3>What your AI can then do:</h3>
+          <ul>
+            <li>Help you understand the tracks and pick a direction</li>
+            <li>Suggest project ideas with relevant APIs and datasets</li>
+            <li>Review your project against the judging criteria</li>
+            <li>Help you prepare and structure your submission</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logistics -->
+  <section id="logistics" class="alt">
+    <div class="container">
+      <span class="label">Logistics</span>
+      <h2>Getting there</h2>
+      <div class="logistics-grid">
+        <div class="logistics-card">
+          <div class="logistics-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Venue</h3>
+          <p>Urbe Hub @ Citta dell'Altreconomia<br>Largo Dino Frisullo, Testaccio, Rome</p>
+          <a href="https://maps.google.com/?q=Citta+dell'Altreconomia+Roma" target="_blank" rel="noopener">Open in Maps &rarr;</a>
+        </div>
+        <div class="logistics-card">
+          <div class="logistics-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Lunch</h3>
+          <p>Provided during hacking hours. Focus on building, not food logistics.</p>
+        </div>
+        <div class="logistics-card">
+          <div class="logistics-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>What to bring</h3>
+          <p>Laptop, charger, headphones. Everything else is covered.</p>
+        </div>
+        <div class="logistics-card">
+          <div class="logistics-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          </div>
+          <h3>Wifi</h3>
+          <p>Network and password provided on arrival.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-brand">Built for builders. <span>Urbe Hub</span></p>
+    <a href="https://urbe.build" target="_blank" rel="noopener">urbe.build</a>
+  </footer>
+
+  <script>
+    // ── Accordion ──
+    document.querySelectorAll('.track-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const expanded = trigger.getAttribute('aria-expanded') === 'true';
+        const bodyId = trigger.getAttribute('aria-controls');
+        const body = document.getElementById(bodyId);
+
+        // Close all
+        document.querySelectorAll('.track-trigger').forEach(t => {
+          t.setAttribute('aria-expanded', 'false');
+          t.closest('.track-item').classList.remove('is-open');
+        });
+        document.querySelectorAll('.track-body').forEach(b => {
+          b.style.maxHeight = '0';
+          b.classList.remove('open');
+        });
+
+        // Open clicked (if it was closed)
+        if (!expanded) {
+          trigger.setAttribute('aria-expanded', 'true');
+          trigger.closest('.track-item').classList.add('is-open');
+          body.classList.add('open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // ── Nav scrolled state ──
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.7);
+    }, { passive: true });
+
+    // ── Nav active link on scroll ──
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
