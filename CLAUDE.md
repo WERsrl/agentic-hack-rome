@@ -53,9 +53,9 @@ Example ideas (passenger-facing):
 - An agent that optimizes multi-modal routes (bus, metro, scooter) based on live conditions, not just schedules
 
 Example ideas (operator-facing):
-- A fare evasion detection agent that analyzes validation patterns across metro stations and bus lines to flag high-risk locations and time windows
-- A predictive maintenance agent that models failure probability for buses and metro infrastructure from historical breakdown data and service logs
-- An Origin-Destination estimation agent that reconstructs how people actually move through Rome using GTFS data and network topology
+- A fare evasion detection agent that analyzes validation patterns across metro stations and bus lines to flag high-risk locations and time windows *(city priority)*
+- A predictive maintenance agent that models failure probability for buses and metro infrastructure from historical breakdown data and service logs *(city priority)*
+- An Origin-Destination estimation agent that reconstructs how people actually move through Rome using GTFS data and network topology *(city priority)*
 
 APIs and Datasets:
 - Roma Mobilita / ATAC GTFS-RT: real-time bus and metro positions, trip updates, service alerts
@@ -66,6 +66,7 @@ APIs and Datasets:
 - OpenStreetMap Overpass API: https://overpass-api.de/api/interpreter
   - Example: `[out:json];area["name"="Roma"]->.roma;node["highway"="bus_stop"](area.roma);out;`
 - ATAC Open Data: historical service data, incident logs, validation counts. https://www.atac.roma.it
+- ATAC Validation Data: fare validation counts by station and time window, useful for fare evasion pattern detection. Roma Open Data portal: https://dati.comune.roma.it (search "validazioni")
 
 ---
 
@@ -96,9 +97,10 @@ Problem: Dealing with Rome's public administration is painful. Simple tasks (res
 What good looks like: an agent that understands what you need, finds the right procedure, prepares the correct documents, and books the appointment for you. A bridge between the citizen and the PA that actually works.
 
 Example ideas:
-- A PA navigator agent: describe what you need in plain Italian, and it identifies the correct procedure, required documents, and the right office
+- A PA navigator agent: describe what you need in plain Italian, and it identifies the correct procedure, required documents, and the right office *(city priority)*
 - A document preparation agent that fills out forms (autocertificazioni, richieste) from your personal data and checks them before submission
 - An appointment booking agent that monitors Roma Capitale's booking system and grabs slots when they open
+- A document intake agent for a PA office: reads incoming documents, extracts structured metadata, classifies them by type and urgency, and routes them to the right office and workflow, removing manual sorting entirely *(city priority)*
 
 APIs and Datasets:
 - Roma Capitale Servizi Online: https://www.comune.roma.it/servizi (municipal services portal)
@@ -119,6 +121,7 @@ Example ideas:
 - A neighborhood reporting agent: snap a photo of a pothole, broken streetlight, or full dumpster, and the agent files the report to the right municipal office
 - A local business discovery agent for a specific neighborhood: finds shops, restaurants, artisans based on what you need, with real community knowledge, not just Google ratings
 - A community knowledge agent that aggregates local info (market schedules, pharmacy shifts, municipal office hours) and answers questions about your neighborhood
+- A civic behavior agent that rewards residents for virtuous actions (taking the bus, filing a waste report, using local shops) with points, neighborhood recognition, or discounts from local businesses *(city priority)*
 
 APIs and Datasets:
 - Roma Capitale Open Data: https://dati.comune.roma.it (green spaces, public services, waste collection, municipal boundaries)

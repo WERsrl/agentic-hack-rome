@@ -481,6 +481,21 @@
       line-height: 1.55;
     }
 
+    .city-priority {
+      display: inline-block;
+      background: rgba(117,58,136,0.1);
+      border: 1px solid rgba(117,58,136,0.25);
+      color: #753A88;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
     .track-ideas li::before {
       content: '';
       position: absolute;
@@ -1010,9 +1025,9 @@
 
               <div class="track-sublabel">Example ideas: operator-facing</div>
               <ul class="track-ideas">
-                <li>A fare evasion detection agent that analyzes validation patterns across metro stations and bus lines to flag high-risk locations and time windows</li>
-                <li>A predictive maintenance agent that models failure probability for buses and metro infrastructure from historical breakdown data and service logs</li>
-                <li>An Origin-Destination estimation agent that reconstructs how people actually move through Rome using GTFS data and network topology</li>
+                <li>A fare evasion detection agent that analyzes validation patterns across metro stations and bus lines to flag high-risk locations and time windows <span class="city-priority">city priority</span></li>
+                <li>A predictive maintenance agent that models failure probability for buses and metro infrastructure from historical breakdown data and service logs <span class="city-priority">city priority</span></li>
+                <li>An Origin-Destination estimation agent that reconstructs how people actually move through Rome using GTFS data and network topology <span class="city-priority">city priority</span></li>
               </ul>
 
               <div class="track-apis">
@@ -1023,6 +1038,7 @@
                   <li>Roma Open Data: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (transport incidents, service reports, infrastructure data)</li>
                   <li>OpenStreetMap Overpass API: <a href="https://overpass-api.de/api/interpreter" target="_blank" rel="noopener">overpass-api.de</a> (road network, bike lanes, transit stops)</li>
                   <li>ATAC Open Data: historical service data, incident logs, validation counts. <a href="https://www.atac.roma.it" target="_blank" rel="noopener">atac.roma.it</a></li>
+                  <li>ATAC Validation Data: fare validation counts by station and time window, useful for fare evasion pattern detection. <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (search "validazioni")</li>
                 </ul>
               </div>
             </div>
@@ -1086,9 +1102,10 @@
 
               <div class="track-sublabel">Example ideas</div>
               <ul class="track-ideas">
-                <li>A PA navigator agent: describe what you need in plain Italian, and it identifies the correct procedure, required documents, and the right office</li>
+                <li>A PA navigator agent: describe what you need in plain Italian, and it identifies the correct procedure, required documents, and the right office <span class="city-priority">city priority</span></li>
                 <li>A document preparation agent that fills out forms (autocertificazioni, richieste) from your personal data and checks them before submission</li>
                 <li>An appointment booking agent that monitors Roma Capitale's booking system and grabs slots when they open</li>
+                <li>A document intake agent for a PA office: reads incoming documents, extracts structured metadata, classifies them by type and urgency, and routes them to the right office and workflow, removing manual sorting entirely <span class="city-priority">city priority</span></li>
               </ul>
 
               <div class="track-apis">
@@ -1127,6 +1144,7 @@
                 <li>A neighborhood reporting agent: snap a photo of a pothole, broken streetlight, or full dumpster, and the agent files the report to the right municipal office</li>
                 <li>A local business discovery agent for a specific neighborhood: finds shops, restaurants, artisans based on what you need, with real community knowledge</li>
                 <li>A community knowledge agent that aggregates local info (market schedules, pharmacy shifts, municipal office hours) and answers questions about your neighborhood</li>
+                <li>A civic behavior agent that rewards residents for virtuous actions (taking the bus, filing a waste report, using local shops) with points, neighborhood recognition, or discounts from local businesses <span class="city-priority">city priority</span></li>
               </ul>
 
               <div class="track-apis">
