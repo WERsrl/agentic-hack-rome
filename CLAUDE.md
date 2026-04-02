@@ -203,16 +203,22 @@ What to submit:
 1. GitHub repo (public, mandatory)
 2. Recorded video demo (1 to 2 minutes, for post-event publishing)
 3. Live pitch on stage (1 to 2 minutes, separate from the video)
-4. Submission form (link provided during the event)
+4. Submission form: https://forms.gle/6KJuyYJm8FfwEKpY6
+
+### Submission assistant
+
+Drop `agentic-hack-submit.md` into your project root, then tell your AI assistant "help me prepare the submission". It will scan your project, ask for what it can't find, and open a page in your browser with one-click copy buttons for every form field.
+
+The skill works with Claude Code, Cursor, Windsurf, and any AI assistant that reads markdown.
 
 ### Submission template
 
-Tell your AI assistant "help me prepare the submission" and it can fill this from your project:
+If you don't use the skill, fill this in manually and paste into the form:
 
 - Project name:
 - Track: [Muoviti / Naviga / Sbriga / Vivi / Own idea]
-- Team members: [names and roles]
-- GitHub repo: [URL]
+- Team lead name and email:
+- Other team members: [name, email, optional GitHub/LinkedIn]
 - One-line description: [what it does in one sentence]
 - What does your project do? [2 to 3 sentences explaining the problem and your solution]
 - Key technologies used: [frameworks, APIs, AI models, tools]
