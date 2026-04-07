@@ -241,14 +241,15 @@ The skill works with Claude Code, Cursor, Windsurf, and any AI assistant that re
 
 If you don't use the skill, fill this in manually and paste into the form:
 
-- Project name:
-- Track: [Muoviti / Naviga / Sbriga / Vivi / Own idea]
-- Team lead name and email:
-- Other team members: [name, email, optional GitHub/LinkedIn]
-- One-line description: [what it does in one sentence]
-- What does your project do? [2 to 3 sentences explaining the problem and your solution]
-- Key technologies used: [frameworks, APIs, AI models, tools]
-- Video demo link: [URL]
+- Nome del progetto:
+- Nome del team lead:
+- Email del team lead:
+- Altri membri del team: [nome, email, GitHub/LinkedIn opzionale]
+- Descrizione in una riga: [cosa fa in una frase]
+- Cosa fa il vostro progetto? [2-3 frasi: problema e soluzione]
+- URL della repo GitHub: [URL]
+- Link alla video demo: [URL]
+- Tecnologie chiave e tool agentici utilizzati: [frameworks, API, modelli AI, tool]
 
 ---
 

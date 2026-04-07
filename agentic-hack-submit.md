@@ -47,8 +47,7 @@ Ask for the fields you could not auto-detect. Ask one question at a time. Do not
 1. Team lead name: "What is your name?" (team lead)
 2. Team lead email: "What is your email?"
 3. Other team members: "Are there other team members? If yes, list their name, email, and optionally GitHub or LinkedIn (one per line). If not, just say no."
-4. Track: "Which track did you build for? Options: Muoviti (mobility), Naviga (tourism), Sbriga (bureaucracy), Vivi (neighborhoods), or own idea / other."
-5. Video demo link: "Do you have a video demo link? (YouTube, Loom, Drive, etc.) If not recorded yet, say 'not yet'."
+4. Video demo link: "Do you have a video demo link? (YouTube, Loom, Drive, etc.) If not recorded yet, say 'not yet'."
 
 **Ask only if not found during scan:**
 - Project name
@@ -60,7 +59,6 @@ After collecting all fields, confirm the full submission with the hacker before 
 
 > "Here is your complete submission. Does everything look correct?
 > - Project name: [value]
-> - Track: [value]
 > - Team lead: [name] ([email])
 > - Other members: [value or "none"]
 > - One-line description: [value]
@@ -79,7 +77,6 @@ Once the hacker confirms the submission, generate the file below.
 
 Replace every `{{PLACEHOLDER}}` with the actual collected value:
 - `{{PROJECT_NAME}}` → project name
-- `{{TRACK}}` → track name (or "Own idea" if other)
 - `{{TEAM_LEAD_NAME}}` → team lead name
 - `{{TEAM_LEAD_EMAIL}}` → team lead email
 - `{{OTHER_MEMBERS}}` → other members (or "—" if none)
@@ -96,11 +93,11 @@ Write the following HTML to `/tmp/agentic-hack-submit.html`:
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic Hack Rome — Submit Your Project</title>
+  <title>Agentic Hack Rome — Submission del progetto</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -143,123 +140,116 @@ Write the following HTML to `/tmp/agentic-hack-submit.html`:
 <div class="container">
   <div class="header">
     <div class="badge">Agentic Hack Rome</div>
-    <h1>Submit Your Project</h1>
-    <p>Copy each field below and paste it into the form.</p>
-    <div class="deadline">Deadline: 16:00 today, April 11</div>
+    <h1>Invia il tuo progetto</h1>
+    <p>Copia ogni campo e incollalo nel form.</p>
+    <div class="deadline">Deadline: 16:00, 11 aprile</div>
   </div>
-  <a class="form-btn" href="https://forms.gle/6KJuyYJm8FfwEKpY6" target="_blank">Open Submission Form &rarr;</a>
+  <a class="form-btn" href="https://forms.gle/6KJuyYJm8FfwEKpY6" target="_blank">Apri il form di submission &rarr;</a>
   <div class="fields">
     <div class="field">
-      <div class="field-label">Project Name</div>
+      <div class="field-label">Nome del progetto</div>
       <div class="field-row">
         <div class="field-value">{{PROJECT_NAME}}</div>
-        <button class="copy-btn" data-copy="{{PROJECT_NAME}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{PROJECT_NAME}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
     <div class="field">
-      <div class="field-label">Track</div>
-      <div class="field-row">
-        <div class="field-value">{{TRACK}}</div>
-        <button class="copy-btn" data-copy="{{TRACK}}" onclick="copyField(this)">Copy</button>
-      </div>
-    </div>
-    <div class="field">
-      <div class="field-label">Team Lead Name</div>
+      <div class="field-label">Nome del team lead</div>
       <div class="field-row">
         <div class="field-value">{{TEAM_LEAD_NAME}}</div>
-        <button class="copy-btn" data-copy="{{TEAM_LEAD_NAME}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{TEAM_LEAD_NAME}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
     <div class="field">
-      <div class="field-label">Team Lead Email</div>
+      <div class="field-label">Email del team lead</div>
       <div class="field-row">
         <div class="field-value">{{TEAM_LEAD_EMAIL}}</div>
-        <button class="copy-btn" data-copy="{{TEAM_LEAD_EMAIL}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{TEAM_LEAD_EMAIL}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
     <div class="field">
-      <div class="field-label">Other Team Members (optional)</div>
+      <div class="field-label">Altri membri del team (opzionale)</div>
       <div class="field-row">
         <div class="field-value">{{OTHER_MEMBERS}}</div>
-        <button class="copy-btn" data-copy="{{OTHER_MEMBERS}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{OTHER_MEMBERS}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
     <div class="field">
-      <div class="field-label">One-Line Description</div>
+      <div class="field-label">Descrizione in una riga</div>
       <div class="field-row">
         <div class="field-value">{{ONE_LINE}}</div>
-        <button class="copy-btn" data-copy="{{ONE_LINE}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{ONE_LINE}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
     <div class="field">
-      <div class="field-label">What Does Your Project Do?</div>
+      <div class="field-label">Cosa fa il vostro progetto?</div>
       <div class="field-row">
         <div class="field-value">{{WHAT_IT_DOES}}</div>
-        <button class="copy-btn" data-copy="{{WHAT_IT_DOES}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{WHAT_IT_DOES}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
     <div class="field">
-      <div class="field-label">GitHub Repo</div>
+      <div class="field-label">URL della repo GitHub</div>
       <div class="field-row">
         <div class="field-value">{{GITHUB_URL}}</div>
-        <button class="copy-btn" data-copy="{{GITHUB_URL}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{GITHUB_URL}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
     <div class="field">
-      <div class="field-label">Video Demo Link</div>
+      <div class="field-label">Link alla video demo</div>
       <div class="field-row">
         <div class="field-value">{{VIDEO_URL}}</div>
-        <button class="copy-btn" data-copy="{{VIDEO_URL}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{VIDEO_URL}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
     <div class="field">
-      <div class="field-label">Key Technologies and Agentic Tools</div>
+      <div class="field-label">Tecnologie chiave e tool agentici utilizzati</div>
       <div class="field-row">
         <div class="field-value">{{TECHNOLOGIES}}</div>
-        <button class="copy-btn" data-copy="{{TECHNOLOGIES}}" onclick="copyField(this)">Copy</button>
+        <button class="copy-btn" data-copy="{{TECHNOLOGIES}}" onclick="copyField(this)">Copia</button>
       </div>
     </div>
   </div>
   <div class="check-card">
     <div class="check-header" onclick="toggleCheck()">
-      <span>Quick self-check before submitting</span>
+      <span>Check rapido prima di inviare</span>
       <span id="arrow">&#9660;</span>
     </div>
     <div class="check-body" id="checkBody">
       <div class="pillar">
-        <div class="pillar-title">Idea and Impact (33%)</div>
+        <div class="pillar-title">Idea e Impatto (33%)</div>
         <ul>
-          <li>Is it genuinely useful for people in Rome?</li>
-          <li>Is the problem specific, not generic?</li>
-          <li>Would real people actually use this?</li>
+          <li>È davvero utile per le persone che vivono a Roma?</li>
+          <li>Il problema è specifico e concreto?</li>
+          <li>Qualcuno lo userebbe nella vita reale?</li>
         </ul>
       </div>
       <div class="pillar">
-        <div class="pillar-title">Technical Execution (33%)</div>
+        <div class="pillar-title">Esecuzione Tecnica (33%)</div>
         <ul>
-          <li>Are you using AI agents or agentic tooling?</li>
-          <li>Does the architecture make sense for the problem?</li>
-          <li>Are you integrating relevant APIs or datasets?</li>
+          <li>Stai usando agenti AI o tool agentici?</li>
+          <li>L'architettura ha senso per il problema?</li>
+          <li>Stai integrando API o dataset rilevanti?</li>
         </ul>
       </div>
       <div class="pillar">
         <div class="pillar-title">Demo-readiness (33%)</div>
         <ul>
-          <li>Can you demo a working flow end-to-end?</li>
-          <li>Is your video under 2 minutes and clear?</li>
-          <li>Does it work without crashing?</li>
+          <li>Riesci a fare una demo end-to-end funzionante?</li>
+          <li>Il video è sotto i 2 minuti e chiaro?</li>
+          <li>Funziona senza crashare?</li>
         </ul>
       </div>
     </div>
   </div>
-  <p class="footer-note">Generated by your AI assistant. Agentic Hack Rome, April 11, 2026.</p>
+  <p class="footer-note">Generato dal tuo assistente AI. Agentic Hack Rome, 11 aprile 2026.</p>
 </div>
 <script>
   function copyField(btn) {
     navigator.clipboard.writeText(btn.dataset.copy).then(() => {
-      btn.textContent = 'Copied!';
+      btn.textContent = 'Copiato!';
       btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+      setTimeout(() => { btn.textContent = 'Copia'; btn.classList.remove('copied'); }, 1800);
     });
   }
   function toggleCheck() {
@@ -286,7 +276,7 @@ Detect the OS from the system environment or ask the hacker if unsure. On macOS 
 - Windows: `start /tmp/agentic-hack-submit.html`
 
 Then tell the hacker:
-> "Your submission page is ready and open in your browser. Click 'Open Submission Form' to go to the form, then copy each field one by one. The form also has a consent checkbox at the end: 'I agree that this project can be featured on Urbe Hub's social media and channels.' Tick it if you agree. Good luck!"
+> "Your submission page is ready and open in your browser. Click 'Apri il form di submission' to go to the form, then copy each field one by one. The form also has a consent checkbox at the end: 'Acconsento che questo progetto possa essere pubblicato sui social media e i canali di Urbe Hub.' Tick it if you agree. Good luck!"
 
 ---
 
