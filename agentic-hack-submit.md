@@ -286,7 +286,7 @@ Detect the OS from the system environment or ask the hacker if unsure. On macOS 
 - Windows: `start /tmp/agentic-hack-submit.html`
 
 Then tell the hacker:
-> "Your submission page is ready and open in your browser. Click 'Open Submission Form' to go to the form, then copy each field one by one. Good luck!"
+> "Your submission page is ready and open in your browser. Click 'Open Submission Form' to go to the form, then copy each field one by one. The form also has a consent checkbox at the end: 'I agree that this project can be featured on Urbe Hub's social media and channels.' Tick it if you agree. Good luck!"
 
 ---
 

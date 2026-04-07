@@ -58,6 +58,7 @@ Try these prompts:
 | `CLAUDE.md` | Agent-readable hacker manual (Claude Code, Windsurf) |
 | `.cursorrules` | Same content, for Cursor users |
 | `index.html` | Visual website version of the manual |
+| `agentic-hack-submit.md` | Submission assistant: drop into your project, tell your AI "help me prepare the submission" |
 | `README.md` | This file |
 
 ---
