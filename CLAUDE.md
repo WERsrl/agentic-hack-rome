@@ -181,9 +181,32 @@ Four mentors are on-site during building hours (11:00 to 16:00). Find them if yo
 
 Every participant gets these on event day, regardless of results.
 
-- ElevenLabs: 1 month free Creator tier. Text-to-speech, voice cloning, conversational AI voice interfaces. Docs: https://elevenlabs.io/docs
-- v0 by Vercel: $30 free credits. AI-powered UI generation for rapid prototyping. URL: https://v0.dev
-- Exoid: Free platform access. AI-powered data analysis and insight generation. URL: https://exoid.com
+### ElevenLabs: 1 month free Creator tier ($22 value)
+Text-to-speech, voice cloning, conversational AI voice interfaces. Docs: https://elevenlabs.io/docs
+
+How to claim:
+1. Join the ElevenLabs Discord: https://discord.com/invite/VnBvbbcdEC
+2. Go to the coupon-codes channel
+3. Click "Start Redemption"
+4. Select "Agentic Hack Rome" as the event
+5. Enter the email you used to register on Lu.ma
+6. The bot sends you a unique coupon code
+
+Video tutorial: https://youtu.be/S143_JtCtV8
+
+### v0 by Vercel: $30 free credits
+AI-powered UI generation for rapid prototyping of React and Next.js interfaces. URL: https://v0.dev
+
+How to claim:
+1. Go to https://v0.dev
+2. Sign in or create an account
+3. Redeem promo code: AGENTIC-ROME-V0
+4. Credits expire one week after redemption
+
+### Exoid: Free platform access
+AI-powered data analysis and insight generation from datasets. URL: https://exoid.com
+
+How to claim: Exoid is free to use. Just visit https://exoid.com and start building.
 
 ---
 
