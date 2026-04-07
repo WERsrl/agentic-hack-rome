@@ -200,7 +200,7 @@ AI-powered UI generation for rapid prototyping of React and Next.js interfaces. 
 How to claim:
 1. Go to https://v0.dev
 2. Sign in or create an account
-3. Redeem promo code: AGENTIC-ROME-V0
+3. Redeem the promo code sent to your email (the one you used to register on Lu.ma)
 4. Credits expire one week after redemption
 
 ### Exoid: Free platform access

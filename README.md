@@ -10,7 +10,7 @@
 
 This hackathon is about building with AI agents. So the manual itself is built for AI agents.
 
-**Human layer:** Open `index.html` in your browser or visit the website for the full visual guide: schedule, tracks, rules, prizes, logistics.
+**Human layer:** Visit the website at **https://agentic-hack-rome.vercel.app** for the full visual guide: schedule, tracks, rules, prizes, logistics.
 
 **Agent layer:** Drop `CLAUDE.md` (or `.cursorrules`) into your project root and your AI coding assistant becomes your hackathon teammate. It knows the tracks, the rules, the APIs, the judging criteria, and how to help you prepare your submission.
 
@@ -60,6 +60,15 @@ Try these prompts:
 | `index.html` | Visual website version of the manual |
 | `agentic-hack-submit.md` | Submission assistant: drop into your project, tell your AI "help me prepare the submission" |
 | `README.md` | This file |
+
+---
+
+## Deployments
+
+| What | URL |
+|------|-----|
+| Website (Vercel) | https://agentic-hack-rome.vercel.app |
+| GitHub repo | https://github.com/WERsrl/agentic-hack-rome |
 
 ---
 
