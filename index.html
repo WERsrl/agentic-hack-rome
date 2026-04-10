@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agentic Hack Rome: Hacker Manual</title>
-  <meta name="description" content="50 builders. 5 hours. AI agents for Rome. One-day hackathon at Urbe Hub, April 11, 2026.">
+  <meta name="description" content="50 builder. 5 ore. Agenti AI per Roma. Hackathon di un giorno a Urbe Hub, 11 aprile 2026.">
   <meta property="og:title" content="Agentic Hack Rome — Hacker Manual">
-  <meta property="og:description" content="50 builders. 5 hours. AI agents for Rome. One-day hackathon at Urbe Hub, April 11, 2026.">
+  <meta property="og:description" content="50 builder. 5 ore. Agenti AI per Roma. Hackathon di un giorno a Urbe Hub, 11 aprile 2026.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://agentic-hack-rome.vercel.app">
   <link rel="canonical" href="https://agentic-hack-rome.vercel.app">
@@ -151,6 +151,40 @@
     .nav.scrolled .nav-links a { color: var(--muted); }
     .nav.scrolled .nav-links a:hover, .nav.scrolled .nav-links a.active { color: var(--heading); background: rgba(0,0,0,0.05); }
     .nav-links a:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+
+    /* ── Language Toggle ── */
+    .lang-toggle {
+      display: flex;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      padding: 4px 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .nav.scrolled .lang-toggle {
+      border-color: var(--border);
+    }
+    .nav.scrolled .lang-btn {
+      color: var(--muted);
+    }
+    .nav.scrolled .lang-btn.active {
+      background: rgba(0,0,0,0.06);
+      color: var(--heading);
+    }
 
     /* ── Hero ── */
     .hero {
@@ -922,27 +956,31 @@
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">Agentic Hack <span>Rome</span></a>
       <ul class="nav-links" role="list">
-        <li><a href="#schedule">Schedule</a></li>
-        <li><a href="#tracks">Tracks</a></li>
-        <li><a href="#rules">Rules</a></li>
-        <li><a href="#mentors">Mentors</a></li>
-        <li><a href="#perks">Perks</a></li>
-        <li><a href="#prizes">Prizes</a></li>
-        <li><a href="#submit">Submit</a></li>
+        <li><a href="#schedule" data-i18n="nav-schedule">Programma</a></li>
+        <li><a href="#tracks" data-i18n="nav-tracks">Tracce</a></li>
+        <li><a href="#rules" data-i18n="nav-rules">Regole</a></li>
+        <li><a href="#mentors" data-i18n="nav-mentors">Mentor</a></li>
+        <li><a href="#perks" data-i18n="nav-perks">Vantaggi</a></li>
+        <li><a href="#prizes" data-i18n="nav-prizes">Premi</a></li>
+        <li><a href="#submit" data-i18n="nav-submit">Invia</a></li>
       </ul>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="it" aria-pressed="true">IT</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-content container">
-      <span class="hero-eyebrow">April 11, 2026 &nbsp;·&nbsp; Urbe Hub, Testaccio, Rome</span>
+      <span class="hero-eyebrow" data-i18n="hero-eyebrow">11 Aprile 2026 &nbsp;·&nbsp; Urbe Hub, Testaccio, Roma</span>
       <h1>Agentic Hack Rome</h1>
-      <p class="hero-tagline">50 builders. 5 hours. Build for Rome.</p>
-      <p class="hero-meta">AI agents that solve real problems for the city and the people who live here.</p>
+      <p class="hero-tagline" data-i18n="hero-tagline">50 builder. 5 ore. Costruisci per Roma.</p>
+      <p class="hero-meta" data-i18n="hero-meta">Agenti AI che risolvono problemi reali per la citt&agrave; e chi ci vive.</p>
       <div class="hero-ctas">
-        <a href="#tracks" class="btn-primary">See the tracks</a>
-        <a href="#submit" class="btn-ghost">How to submit &rarr;</a>
+        <a href="#tracks" class="btn-primary" data-i18n="hero-btn-primary">Scopri le tracce</a>
+        <a href="#submit" class="btn-ghost" data-i18n="hero-btn-ghost">Come inviare &rarr;</a>
       </div>
     </div>
   </section>
@@ -950,37 +988,37 @@
   <!-- Schedule -->
   <section id="schedule" class="alt">
     <div class="container">
-      <span class="label">Schedule</span>
-      <h2>How the day goes</h2>
+      <span class="label" data-i18n="schedule-label">Programma</span>
+      <h2 data-i18n="schedule-h2">Come si svolge la giornata</h2>
       <div class="timeline">
         <div class="timeline-node">
           <div class="timeline-card">
             <div class="timeline-time">10:00</div>
-            <div class="timeline-label">Doors open</div>
+            <div class="timeline-label" data-i18n="schedule-1">Apertura porte</div>
           </div>
         </div>
         <div class="timeline-node">
           <div class="timeline-card">
             <div class="timeline-time">10:30</div>
-            <div class="timeline-label">Opening and briefing</div>
+            <div class="timeline-label" data-i18n="schedule-2">Apertura e briefing</div>
           </div>
         </div>
         <div class="timeline-node">
           <div class="timeline-card">
             <div class="timeline-time">11:00</div>
-            <div class="timeline-label">Hacking starts (5 hours)</div>
+            <div class="timeline-label" data-i18n="schedule-3">Si parte! (5 ore)</div>
           </div>
         </div>
         <div class="timeline-node">
           <div class="timeline-card">
             <div class="timeline-time">16:00</div>
-            <div class="timeline-label">Project pitches (until 17:30)</div>
+            <div class="timeline-label" data-i18n="schedule-4">Pitch dei progetti (fino alle 17:30)</div>
           </div>
         </div>
         <div class="timeline-node">
           <div class="timeline-card">
             <div class="timeline-time">17:30</div>
-            <div class="timeline-label">Awards &amp; Aperitivo</div>
+            <div class="timeline-label" data-i18n="schedule-5">Premiazione e aperitivo</div>
           </div>
         </div>
       </div>
@@ -990,13 +1028,13 @@
   <!-- Challenge Tracks -->
   <section id="tracks">
     <div class="container">
-      <span class="label">Challenge Tracks</span>
-      <h2>Inspiration, not constraints.</h2>
-      <p class="section-intro">You don't have to follow these tracks. Build whatever you want, as long as it is genuinely useful for Rome and the people who live here. The tracks are starting points: real problems, datasets, example ideas. Use them if they spark something.</p>
+      <span class="label" data-i18n="tracks-label">Tracce</span>
+      <h2 data-i18n="tracks-h2">Ispirazione, non vincoli.</h2>
+      <p class="section-intro" data-i18n="tracks-intro">Non devi per forza seguire queste tracce. Costruisci quello che vuoi, purch&eacute; sia davvero utile per Roma e chi ci vive. Le tracce sono punti di partenza: problemi reali, dataset, idee di esempio. Usale se ti ispirano.</p>
 
       <div class="tracks-intro-banner">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <p><strong>The one thing that matters:</strong> build something that makes life better for people in this city. Click a track to explore problems, ideas, and APIs.</p>
+        <p data-i18n="tracks-banner"><strong>L'unica cosa che conta:</strong> costruisci qualcosa che migliori la vita delle persone in questa citt&agrave;. Clicca su una traccia per esplorare problemi, idee e API.</p>
       </div>
 
       <div class="tracks-accordion" role="list">
@@ -1008,35 +1046,35 @@
               <span class="track-dot" aria-hidden="true"></span>
               <div class="track-trigger-label">
                 <span class="track-trigger-name">Muoviti</span>
-                <span class="track-trigger-sub">Mobility: transport, infrastructure, urban flow</span>
+                <span class="track-trigger-sub" data-i18n="track-muoviti-sub">Mobilit&agrave;: trasporti, infrastrutture, flussi urbani</span>
               </div>
             </div>
             <svg class="track-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="track-body" id="track-muoviti" role="region">
             <div class="track-body-inner">
-              <p class="track-problem">Rome's public transport is unreliable and hard to navigate for commuters, and the challenge runs deeper. ATAC, Rome's transport authority, manages a large fleet with incomplete visibility. Fare evasion drains revenue across the metro system. Infrastructure failures are reactive, not predicted. Understanding how people actually move through the city still requires expensive, slow surveys. AI can change this from both ends: for the passenger navigating the system and for the operators running it.</p>
-              <p class="track-good">What good looks like: an agent that either monitors transport status for commuters and suggests real-time alternatives, or gives ATAC and city operators sharper visibility. Where fares are being evaded, what infrastructure is about to fail, how people actually move through Rome.</p>
+              <p class="track-problem" data-i18n="track-muoviti-problem">Il trasporto pubblico di Roma &egrave; inaffidabile e difficile da navigare per i pendolari, e il problema va pi&ugrave; in profondit&agrave;. ATAC, l'azienda dei trasporti di Roma, gestisce una grande flotta con visibilit&agrave; incompleta. L'evasione tariffaria drena entrate dal sistema metro. I guasti alle infrastrutture sono gestiti in modo reattivo, non predittivo. Capire come le persone si muovono realmente nella citt&agrave; richiede ancora indagini costose e lente. L'AI pu&ograve; cambiare tutto questo da entrambi i lati: per il passeggero che naviga il sistema e per gli operatori che lo gestiscono.</p>
+              <p class="track-good" data-i18n="track-muoviti-good">Un agente che monitora lo stato dei trasporti per i pendolari e suggerisce alternative in tempo reale, oppure che offre ad ATAC e agli operatori della citt&agrave; una visibilit&agrave; pi&ugrave; precisa. Dove si evade la tariffa, quale infrastruttura sta per guastarsi, come le persone si muovono davvero a Roma.</p>
 
-              <div class="track-sublabel">Example ideas: passenger-facing</div>
+              <div class="track-sublabel" data-i18n="track-muoviti-ideas-passenger-label">Idee di esempio: lato passeggero</div>
               <ul class="track-ideas">
-                <li>An agent that monitors your daily commute route and alerts you before disruptions happen, suggesting real-time alternatives</li>
-                <li>A disruption detection agent that aggregates ATAC data, social media reports, and news to build a real-time reliability map</li>
-                <li>An agent that optimizes multi-modal routes (bus + metro + scooter) based on live conditions, not just schedules</li>
+                <li data-i18n="track-muoviti-idea-p1">Un agente che monitora il tuo percorso giornaliero e ti avvisa prima delle interruzioni, suggerendo alternative in tempo reale</li>
+                <li data-i18n="track-muoviti-idea-p2">Un agente di rilevamento disservizi che aggrega dati ATAC, segnalazioni sui social e notizie per costruire una mappa di affidabilit&agrave; in tempo reale</li>
+                <li data-i18n="track-muoviti-idea-p3">Un agente che ottimizza percorsi multimodali (bus + metro + monopattino) basandosi sulle condizioni attuali, non solo sugli orari</li>
               </ul>
 
-              <div class="track-sublabel">Example ideas: operator-facing</div>
+              <div class="track-sublabel" data-i18n="track-muoviti-ideas-operator-label">Idee di esempio: lato operatore</div>
               <ul class="track-ideas">
-                <li>A fare evasion detection agent that analyzes validation patterns across metro stations and bus lines to flag high-risk locations and time windows <span class="city-priority">city priority</span></li>
-                <li>A predictive maintenance agent that models failure probability for buses and metro infrastructure from historical breakdown data and service logs <span class="city-priority">city priority</span></li>
-                <li>An Origin-Destination estimation agent that reconstructs how people actually move through Rome using GTFS data and network topology <span class="city-priority">city priority</span></li>
+                <li data-i18n="track-muoviti-idea-o1">Un agente di rilevamento dell'evasione tariffaria che analizza i pattern di validazione nelle stazioni metro e sulle linee bus per segnalare luoghi e fasce orarie ad alto rischio <span class="city-priority" data-i18n="city-priority-muoviti-o1">priorit&agrave; citt&agrave;</span></li>
+                <li data-i18n="track-muoviti-idea-o2">Un agente di manutenzione predittiva che modella la probabilit&agrave; di guasto per autobus e infrastrutture metro a partire da dati storici e log di servizio <span class="city-priority" data-i18n="city-priority-muoviti-o2">priorit&agrave; citt&agrave;</span></li>
+                <li data-i18n="track-muoviti-idea-o3">Un agente di stima Origine-Destinazione che ricostruisce come le persone si muovono realmente a Roma usando dati GTFS e topologia della rete <span class="city-priority" data-i18n="city-priority-muoviti-o3">priorit&agrave; citt&agrave;</span></li>
               </ul>
 
               <div class="track-apis">
-                <div class="track-sublabel">APIs &amp; Datasets</div>
+                <div class="track-sublabel" data-i18n="track-muoviti-apis-label">API e Dataset</div>
                 <ul>
                   <li>Roma Mobilita / ATAC GTFS-RT: real-time positions, trip updates, service alerts. Static GTFS: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (search "GTFS"). Docs: <a href="https://developers.google.com/transit/gtfs-realtime" target="_blank" rel="noopener">GTFS-RT spec</a></li>
-                  <li>Muoversi a Roma: <a href="https://muovi.roma.it" target="_blank" rel="noopener">muovi.roma.it</a> (official mobility portal)</li>
+                  <li>Muoversi a Roma: <a href="https://romamobilita.it" target="_blank" rel="noopener">romamobilita.it</a> (official mobility portal)</li>
                   <li>Roma Open Data: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (transport incidents, service reports, infrastructure data)</li>
                   <li>OpenStreetMap Overpass API: <a href="https://overpass-api.de/api/interpreter" target="_blank" rel="noopener">overpass-api.de</a> (road network, bike lanes, transit stops)</li>
                   <li>ATAC Open Data: historical service data, incident logs, validation counts. <a href="https://www.atac.roma.it" target="_blank" rel="noopener">atac.roma.it</a></li>
@@ -1054,25 +1092,25 @@
               <span class="track-dot" aria-hidden="true"></span>
               <div class="track-trigger-label">
                 <span class="track-trigger-name">Naviga</span>
-                <span class="track-trigger-sub">Tourism: cultural heritage, experiences, logistics</span>
+                <span class="track-trigger-sub" data-i18n="track-naviga-sub">Turismo: patrimonio culturale, esperienze, logistica</span>
               </div>
             </div>
             <svg class="track-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="track-body" id="track-naviga" role="region">
             <div class="track-body-inner">
-              <p class="track-problem">Rome has one of the richest cultural heritages in the world, but navigating it is a mess. Tourist info is fragmented, ticket systems are separate for every venue, and most visitors follow the same overcrowded paths while hidden gems go unseen. No tool understands your interests and acts on them.</p>
-              <p class="track-good">What good looks like: an agent that knows what you care about, recommends experiences you'd actually enjoy, and handles the logistics -- booking tickets, suggesting timing to avoid crowds, building a personalized itinerary that goes beyond the obvious.</p>
+              <p class="track-problem" data-i18n="track-naviga-problem">Roma ha uno dei patrimoni culturali pi&ugrave; ricchi al mondo, ma navigarlo &egrave; un caos. Le informazioni turistiche sono frammentate, i sistemi di biglietteria sono separati per ogni luogo, e la maggior parte dei visitatori segue gli stessi percorsi sovraffollati mentre le perle nascoste restano invisibili. Nessuno strumento capisce i tuoi interessi e agisce di conseguenza.</p>
+              <p class="track-good" data-i18n="track-naviga-good">Un agente che sa cosa ti interessa, consiglia esperienze che ti piacerebbero davvero e gestisce la logistica: prenotare biglietti, suggerire orari per evitare la folla, costruire un itinerario personalizzato che va oltre l'ovvio.</p>
 
-              <div class="track-sublabel">Example ideas</div>
+              <div class="track-sublabel" data-i18n="track-naviga-ideas-label">Idee di esempio</div>
               <ul class="track-ideas">
-                <li>A personal cultural concierge agent that learns your interests, suggests hidden Rome experiences, and books tickets for you</li>
-                <li>An agent that monitors ticket availability for popular sites (Colosseum, Vatican, Borghese) and auto-books when slots open</li>
-                <li>A neighborhood discovery agent that builds walking tours based on your interests (street art, ancient ruins, food markets, architecture)</li>
+                <li data-i18n="track-naviga-idea-1">Un agente concierge culturale personale che impara i tuoi interessi, suggerisce esperienze nascoste di Roma e prenota biglietti per te</li>
+                <li data-i18n="track-naviga-idea-2">Un agente che monitora la disponibilit&agrave; dei biglietti per i siti pi&ugrave; richiesti (Colosseo, Vaticano, Borghese) e prenota automaticamente quando si aprono posti</li>
+                <li data-i18n="track-naviga-idea-3">Un agente di scoperta dei quartieri che costruisce tour a piedi basati sui tuoi interessi (street art, rovine antiche, mercati, architettura)</li>
               </ul>
 
               <div class="track-apis">
-                <div class="track-sublabel">APIs &amp; Datasets</div>
+                <div class="track-sublabel" data-i18n="track-naviga-apis-label">API e Dataset</div>
                 <ul>
                   <li>MiC (Ministero della Cultura): <a href="https://dati.beniculturali.it" target="_blank" rel="noopener">dati.beniculturali.it</a> (cultural heritage open data)</li>
                   <li>OpenTripMap API: <a href="https://api.opentripmap.com/0.1/en/places/" target="_blank" rel="noopener">api.opentripmap.com</a> (POIs, cultural and tourist sites. Free tier: 1000 req/day)</li>
@@ -1092,28 +1130,28 @@
               <span class="track-dot" aria-hidden="true"></span>
               <div class="track-trigger-label">
                 <span class="track-trigger-name">Sbriga</span>
-                <span class="track-trigger-sub">Bureaucracy: citizen-PA bridge, documents, appointments</span>
+                <span class="track-trigger-sub" data-i18n="track-sbriga-sub">Burocrazia: ponte cittadino-PA, documenti, appuntamenti</span>
               </div>
             </div>
             <svg class="track-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="track-body" id="track-sbriga" role="region">
             <div class="track-body-inner">
-              <p class="track-problem">Dealing with Rome's public administration is painful. Simple tasks -- residency changes, permit requests, document renewals -- require navigating dozens of websites, downloading the wrong forms, calling offices that don't answer, and booking appointments months in advance. Citizens waste days on things that should take minutes.</p>
-              <p class="track-good">What good looks like: an agent that understands what you need, finds the right procedure, prepares the correct documents, and books the appointment for you. A bridge between the citizen and the PA that actually works.</p>
+              <p class="track-problem" data-i18n="track-sbriga-problem">Avere a che fare con la pubblica amministrazione di Roma &egrave; doloroso. Operazioni semplici (cambio di residenza, richieste di permessi, rinnovo documenti) richiedono di navigare decine di siti, scaricare i moduli sbagliati, chiamare uffici che non rispondono e prenotare appuntamenti con mesi di anticipo. I cittadini perdono giorni per cose che dovrebbero richiedere minuti.</p>
+              <p class="track-good" data-i18n="track-sbriga-good">Un agente che capisce di cosa hai bisogno, trova la procedura corretta, prepara i documenti giusti e prenota l'appuntamento per te. Un ponte tra il cittadino e la PA che funziona davvero.</p>
 
-              <div class="track-sublabel">Example ideas</div>
+              <div class="track-sublabel" data-i18n="track-sbriga-ideas-label">Idee di esempio</div>
               <ul class="track-ideas">
-                <li>A PA navigator agent: describe what you need in plain Italian, and it identifies the correct procedure, required documents, and the right office <span class="city-priority">city priority</span></li>
-                <li>A document preparation agent that fills out forms (autocertificazioni, richieste) from your personal data and checks them before submission</li>
-                <li>An appointment booking agent that monitors Roma Capitale's booking system and grabs slots when they open</li>
-                <li>A document intake agent for a PA office: reads incoming documents, extracts structured metadata, classifies them by type and urgency, and routes them to the right office and workflow, removing manual sorting entirely <span class="city-priority">city priority</span></li>
+                <li data-i18n="track-sbriga-idea-1">Un agente navigatore della PA: descrivi ci&ograve; di cui hai bisogno in italiano semplice e identifica la procedura corretta, i documenti necessari e l'ufficio giusto <span class="city-priority" data-i18n="city-priority-sbriga-1">priorit&agrave; citt&agrave;</span></li>
+                <li data-i18n="track-sbriga-idea-2">Un agente di preparazione documenti che compila moduli (autocertificazioni, richieste) con i tuoi dati personali e li controlla prima dell'invio</li>
+                <li data-i18n="track-sbriga-idea-3">Un agente di prenotazione appuntamenti che monitora il sistema di prenotazione di Roma Capitale e prende i posti quando si liberano</li>
+                <li data-i18n="track-sbriga-idea-4">Un agente di smistamento documenti per un ufficio PA: legge i documenti in arrivo, estrae metadati strutturati, li classifica per tipo e urgenza e li inoltra all'ufficio e al flusso di lavoro giusto, eliminando lo smistamento manuale <span class="city-priority" data-i18n="city-priority-sbriga-4">priorit&agrave; citt&agrave;</span></li>
               </ul>
 
               <div class="track-apis">
-                <div class="track-sublabel">APIs &amp; Datasets</div>
+                <div class="track-sublabel" data-i18n="track-sbriga-apis-label">API e Dataset</div>
                 <ul>
-                  <li>Roma Capitale Servizi Online: <a href="https://www.comune.roma.it/servizi" target="_blank" rel="noopener">comune.roma.it/servizi</a> — municipal services portal</li>
+                  <li>Roma Capitale Servizi Online: <a href="https://www.comune.roma.it/servizi" target="_blank" rel="noopener">comune.roma.it/servizi</a> (municipal services portal)</li>
                   <li>ANPR: <a href="https://www.anpr.interno.it" target="_blank" rel="noopener">anpr.interno.it</a> (national population registry, limited public API)</li>
                   <li>Roma Capitale Open Data: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (municipal services, offices, districts)</li>
                   <li>TuPassi: <a href="https://www.tupassi.it" target="_blank" rel="noopener">tupassi.it</a> (appointment booking for Rome public offices)</li>
@@ -1131,26 +1169,26 @@
               <span class="track-dot" aria-hidden="true"></span>
               <div class="track-trigger-label">
                 <span class="track-trigger-name">Vivi</span>
-                <span class="track-trigger-sub">Neighborhoods: district life, local knowledge, community</span>
+                <span class="track-trigger-sub" data-i18n="track-vivi-sub">Quartieri: vita di municipio, sapere locale, comunit&agrave;</span>
               </div>
             </div>
             <svg class="track-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="track-body" id="track-vivi" role="region">
             <div class="track-body-inner">
-              <p class="track-problem">Rome's neighborhoods (municipi) have distinct identities and needs, but no digital infrastructure to support them. Public space issues go unreported, small businesses can't compete with platforms, and community knowledge lives in WhatsApp groups that newcomers can't access.</p>
-              <p class="track-good">What good looks like: a district-level agent that connects residents to their neighborhood. Reporting issues, discovering local businesses, accessing community knowledge, and making the neighborhood work better for everyone.</p>
+              <p class="track-problem" data-i18n="track-vivi-problem">I quartieri di Roma (municipi) hanno identit&agrave; e bisogni distinti, ma nessuna infrastruttura digitale che li supporti. I problemi degli spazi pubblici non vengono segnalati, le piccole attivit&agrave; non possono competere con le piattaforme, e il sapere della comunit&agrave; vive in gruppi WhatsApp a cui i nuovi arrivati non possono accedere.</p>
+              <p class="track-good" data-i18n="track-vivi-good">Un agente a livello di quartiere che collega i residenti al loro municipio. Segnalare problemi, scoprire attivit&agrave; locali, accedere al sapere della comunit&agrave; e far funzionare meglio il quartiere per tutti.</p>
 
-              <div class="track-sublabel">Example ideas</div>
+              <div class="track-sublabel" data-i18n="track-vivi-ideas-label">Idee di esempio</div>
               <ul class="track-ideas">
-                <li>A neighborhood reporting agent: snap a photo of a pothole, broken streetlight, or full dumpster, and the agent files the report to the right municipal office</li>
-                <li>A local business discovery agent for a specific neighborhood: finds shops, restaurants, artisans based on what you need, with real community knowledge</li>
-                <li>A community knowledge agent that aggregates local info (market schedules, pharmacy shifts, municipal office hours) and answers questions about your neighborhood</li>
-                <li>A civic behavior agent that rewards residents for virtuous actions (taking the bus, filing a waste report, using local shops) with points, neighborhood recognition, or discounts from local businesses <span class="city-priority">city priority</span></li>
+                <li data-i18n="track-vivi-idea-1">Un agente di segnalazione quartiere: scatta una foto di una buca, un lampione rotto o un cassonetto pieno e l'agente invia la segnalazione all'ufficio municipale giusto</li>
+                <li data-i18n="track-vivi-idea-2">Un agente di scoperta attivit&agrave; locali per un quartiere specifico: trova negozi, ristoranti, artigiani in base a ci&ograve; di cui hai bisogno, con il sapere reale della comunit&agrave;</li>
+                <li data-i18n="track-vivi-idea-3">Un agente del sapere comunitario che aggrega informazioni locali (orari dei mercati, turni delle farmacie, orari degli uffici municipali) e risponde a domande sul tuo quartiere</li>
+                <li data-i18n="track-vivi-idea-4">Un agente di comportamento civico che premia i residenti per azioni virtuose (prendere il bus, fare una segnalazione rifiuti, comprare nei negozi locali) con punti, riconoscimento di quartiere o sconti dalle attivit&agrave; locali <span class="city-priority" data-i18n="city-priority-vivi-4">priorit&agrave; citt&agrave;</span></li>
               </ul>
 
               <div class="track-apis">
-                <div class="track-sublabel">APIs &amp; Datasets</div>
+                <div class="track-sublabel" data-i18n="track-vivi-apis-label">API e Dataset</div>
                 <ul>
                   <li>Roma Capitale Open Data: <a href="https://dati.comune.roma.it" target="_blank" rel="noopener">dati.comune.roma.it</a> (green spaces, public services, waste collection, municipal boundaries)</li>
                   <li>OpenStreetMap Overpass API: query shops, amenities, parks, infrastructure by neighborhood. Example: <code>[out:json];area["name"="Testaccio"]->.t;(node["shop"](area.t););out;</code></li>
@@ -1170,64 +1208,64 @@
   <!-- Rules -->
   <section id="rules" class="alt">
     <div class="container">
-      <span class="label">Rules</span>
-      <h2>Keep it fair</h2>
+      <span class="label" data-i18n="rules-label">Regole</span>
+      <h2 data-i18n="rules-h2">Gioco pulito</h2>
       <div class="rules-grid" style="margin-top: 2rem;">
 
         <div class="rule-card">
           <div class="rule-icon-wrap" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <div class="rule-title">Teams of 1 to 3</div>
-          <div class="rule-desc">Solo is fine. Max 3 people per team.</div>
+          <div class="rule-title" data-i18n="rule-1-title">Team da 1 a 3</div>
+          <div class="rule-desc" data-i18n="rule-1-desc">Si pu&ograve; partecipare da soli. Massimo 3 persone per team.</div>
         </div>
 
         <div class="rule-card">
           <div class="rule-icon-wrap" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.18-4.96"/></svg>
           </div>
-          <div class="rule-title">New projects only</div>
-          <div class="rule-desc">Pre-existing ideas OK. Pre-existing code is not.</div>
+          <div class="rule-title" data-i18n="rule-2-title">Solo progetti nuovi</div>
+          <div class="rule-desc" data-i18n="rule-2-desc">Idee preesistenti OK. Codice preesistente no.</div>
         </div>
 
         <div class="rule-card">
           <div class="rule-icon-wrap" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="rule-title">5 hours of building</div>
-          <div class="rule-desc">11:00 to 16:00. Lunch provided.</div>
+          <div class="rule-title" data-i18n="rule-3-title">5 ore per costruire</div>
+          <div class="rule-desc" data-i18n="rule-3-desc">Dalle 11:00 alle 16:00. Pranzo incluso.</div>
         </div>
 
         <div class="rule-card">
           <div class="rule-icon-wrap" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <div class="rule-title">Must use AI and agentic tooling</div>
-          <div class="rule-desc">In any form -- tool calling, orchestration, autonomous tasks.</div>
+          <div class="rule-title" data-i18n="rule-4-title">Deve usare AI e tool agentici</div>
+          <div class="rule-desc" data-i18n="rule-4-desc">In qualsiasi forma: tool calling, orchestrazione, task autonomi.</div>
         </div>
 
         <div class="rule-card">
           <div class="rule-icon-wrap" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <div class="rule-title">Useful for Rome</div>
-          <div class="rule-desc">The only constraint that truly matters.</div>
+          <div class="rule-title" data-i18n="rule-5-title">Utile per Roma</div>
+          <div class="rule-desc" data-i18n="rule-5-desc">L'unico vincolo che conta davvero.</div>
         </div>
 
         <div class="rule-card">
           <div class="rule-icon-wrap" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           </div>
-          <div class="rule-title">Public GitHub repo</div>
-          <div class="rule-desc">Required and accessible at submission time.</div>
+          <div class="rule-title" data-i18n="rule-6-title">Repo GitHub pubblica</div>
+          <div class="rule-desc" data-i18n="rule-6-desc">Obbligatoria e accessibile al momento della submission.</div>
         </div>
 
         <div class="rule-card">
           <div class="rule-icon-wrap" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
           </div>
-          <div class="rule-title">Video demo required</div>
-          <div class="rule-desc">1 to 2 minutes, recorded, submitted with the project.</div>
+          <div class="rule-title" data-i18n="rule-7-title">Video demo obbligatorio</div>
+          <div class="rule-desc" data-i18n="rule-7-desc">Da 1 a 2 minuti, registrato, inviato con il progetto.</div>
         </div>
 
       </div>
@@ -1237,35 +1275,35 @@
   <!-- Judging -->
   <section id="judging">
     <div class="container">
-      <span class="label">Judging</span>
-      <h2>Three pillars, equally weighted</h2>
-      <p class="section-intro">Use this to review your project before you pitch.</p>
+      <span class="label" data-i18n="judging-label">Giuria</span>
+      <h2 data-i18n="judging-h2">Tre pilastri, stesso peso</h2>
+      <p class="section-intro" data-i18n="judging-intro">Usa questo come checklist prima di presentare il tuo progetto.</p>
       <div class="judging-grid">
         <div class="judging-card">
           <div class="judging-pct">33%</div>
-          <h3>Idea &amp; Impact</h3>
+          <h3 data-i18n="judging-card-1-title">Idea e Impatto</h3>
           <ul>
-            <li>Is it genuinely useful for Rome and the people living here?</li>
-            <li>Is the problem specific and grounded (not generic)?</li>
-            <li>Would real people or institutions actually use this?</li>
+            <li data-i18n="judging-card-1-li-1">&Egrave; davvero utile per Roma e chi ci vive?</li>
+            <li data-i18n="judging-card-1-li-2">Il problema &egrave; specifico e concreto (non generico)?</li>
+            <li data-i18n="judging-card-1-li-3">Persone o istituzioni reali lo userebbero davvero?</li>
           </ul>
         </div>
         <div class="judging-card">
           <div class="judging-pct">33%</div>
-          <h3>Technical Execution</h3>
+          <h3 data-i18n="judging-card-2-title">Esecuzione Tecnica</h3>
           <ul>
-            <li>Smart use of AI agents, tool calling, APIs</li>
-            <li>Architectural thinking over code polish (it's 5 hours)</li>
-            <li>Good integration of available tools and datasets</li>
+            <li data-i18n="judging-card-2-li-1">Uso intelligente di agenti AI, tool calling, API</li>
+            <li data-i18n="judging-card-2-li-2">Il pensiero architetturale conta pi&ugrave; del codice rifinito (sono 5 ore)</li>
+            <li data-i18n="judging-card-2-li-3">Buona integrazione di tool e dataset disponibili</li>
           </ul>
         </div>
         <div class="judging-card">
           <div class="judging-pct">33%</div>
-          <h3>Demo-readiness</h3>
+          <h3 data-i18n="judging-card-3-title">Prontezza della Demo</h3>
           <ul>
-            <li>Can you demo a working flow end-to-end?</li>
-            <li>An MVP that works beats a concept that crashes</li>
-            <li>Is the demo clear and understandable in under 2 minutes?</li>
+            <li data-i18n="judging-card-3-li-1">Riesci a dimostrare un flusso funzionante end-to-end?</li>
+            <li data-i18n="judging-card-3-li-2">Un MVP che funziona batte un concept che crasha</li>
+            <li data-i18n="judging-card-3-li-3">La demo &egrave; chiara e comprensibile in meno di 2 minuti?</li>
           </ul>
         </div>
       </div>
@@ -1275,9 +1313,9 @@
   <!-- Mentors -->
   <section id="mentors" class="alt">
     <div class="container">
-      <span class="label">Mentors</span>
-      <h2>On-site during building hours</h2>
-      <p class="section-intro">Find them between 11:00 and 16:00 for technical sanity checks, architecture feedback, or to pressure-test your idea.</p>
+      <span class="label" data-i18n="mentors-label">Mentor</span>
+      <h2 data-i18n="mentors-h2">On-site durante le ore di building</h2>
+      <p class="section-intro" data-i18n="mentors-intro">Trovali tra le 11:00 e le 16:00 per un check tecnico, feedback sull'architettura o per mettere alla prova la tua idea.</p>
       <div class="mentors-grid">
         <div class="mentor-card">
           <div class="mentor-avatar" aria-hidden="true">DG</div>
@@ -1314,48 +1352,48 @@
   <!-- Perks -->
   <section id="perks">
     <div class="container">
-      <span class="label">Perks</span>
-      <h2>For every participant</h2>
-      <p class="section-intro">These are yours on event day regardless of how you finish. Tools to help you build faster and better.</p>
+      <span class="label" data-i18n="perks-label">Vantaggi</span>
+      <h2 data-i18n="perks-h2">Per ogni partecipante</h2>
+      <p class="section-intro" data-i18n="perks-intro">Questi sono tuoi il giorno dell'evento, indipendentemente dal risultato. Strumenti per costruire pi&ugrave; velocemente e meglio.</p>
       <div class="cards-grid">
         <div class="perk-card">
-          <span class="card-badge badge-all">All Participants</span>
+          <span class="card-badge badge-all" data-i18n="badge-all">Tutti i Partecipanti</span>
           <h3>ElevenLabs Creator Tier</h3>
-          <p>1 month free ($22 value). Voice AI for your agents: text-to-speech, voice cloning, conversational interfaces.</p>
+          <p data-i18n="perk-elevenlabs-desc">1 mese gratuito (valore $22). Voice AI per i tuoi agenti: text-to-speech, voice cloning, interfacce conversazionali.</p>
           <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-            <strong style="font-size: 0.875rem;">How to claim:</strong>
+            <strong style="font-size: 0.875rem;" data-i18n="how-to-claim">Come riscattare:</strong>
             <ol style="margin-top: 0.5rem; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.6;">
-              <li>Join the <a href="https://discord.com/invite/VnBvbbcdEC" target="_blank" rel="noopener">ElevenLabs Discord</a></li>
-              <li>Go to the <strong>#coupon-codes</strong> channel</li>
-              <li>Click "Start Redemption"</li>
-              <li>Select <strong>Agentic Hack Rome</strong> as the event</li>
-              <li>Enter the email you used to register on Lu.ma</li>
-              <li>The bot sends you a unique coupon code</li>
+              <li data-i18n="perk-elevenlabs-step-1">Entra nel <a href="https://discord.com/invite/VnBvbbcdEC" target="_blank" rel="noopener">Discord di ElevenLabs</a></li>
+              <li data-i18n="perk-elevenlabs-step-2">Vai al canale <strong>#coupon-codes</strong></li>
+              <li data-i18n="perk-elevenlabs-step-3">Clicca "Start Redemption"</li>
+              <li data-i18n="perk-elevenlabs-step-4">Seleziona <strong>Agentic Hack Rome</strong> come evento</li>
+              <li data-i18n="perk-elevenlabs-step-5">Inserisci l'email usata per registrarti su Lu.ma</li>
+              <li data-i18n="perk-elevenlabs-step-6">Il bot ti invia un codice coupon unico</li>
             </ol>
-            <p style="margin-top: 0.5rem; font-size: 0.8125rem; color: var(--muted);"><a href="https://youtu.be/S143_JtCtV8" target="_blank" rel="noopener">Watch the video tutorial</a></p>
+            <p style="margin-top: 0.5rem; font-size: 0.8125rem; color: var(--muted);" data-i18n="perk-elevenlabs-tutorial"><a href="https://youtu.be/S143_JtCtV8" target="_blank" rel="noopener">Guarda il video tutorial</a></p>
           </div>
         </div>
         <div class="perk-card">
-          <span class="card-badge badge-all">All Participants</span>
+          <span class="card-badge badge-all" data-i18n="badge-all-2">Tutti i Partecipanti</span>
           <h3>v0 by Vercel</h3>
-          <p>$30 free credits. AI-powered UI generation for rapid prototyping of React and Next.js interfaces.</p>
+          <p data-i18n="perk-v0-desc">$30 di crediti gratuiti. Generazione UI con AI per prototipare rapidamente interfacce React e Next.js.</p>
           <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-            <strong style="font-size: 0.875rem;">How to claim:</strong>
+            <strong style="font-size: 0.875rem;" data-i18n="how-to-claim-2">Come riscattare:</strong>
             <ol style="margin-top: 0.5rem; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.6;">
-              <li>Go to <a href="https://v0.dev" target="_blank" rel="noopener">v0.dev</a></li>
-              <li>Sign in or create an account</li>
-              <li>Redeem the promo code sent to your email (the one you used to register on Lu.ma)</li>
+              <li data-i18n="perk-v0-step-1">Vai su <a href="https://v0.dev" target="_blank" rel="noopener">v0.dev</a></li>
+              <li data-i18n="perk-v0-step-2">Accedi o crea un account</li>
+              <li data-i18n="perk-v0-step-3">Riscatta il codice promo inviato alla tua email (quella usata per registrarti su Lu.ma)</li>
             </ol>
-            <p style="margin-top: 0.5rem; font-size: 0.8125rem; color: var(--muted);">Credits expire one week after redemption.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8125rem; color: var(--muted);" data-i18n="perk-v0-expire">I crediti scadono una settimana dopo il riscatto.</p>
           </div>
         </div>
         <div class="perk-card">
-          <span class="card-badge badge-all">All Participants</span>
+          <span class="card-badge badge-all" data-i18n="badge-all-3">Tutti i Partecipanti</span>
           <h3>Exoid Platform</h3>
-          <p>Free platform access. AI-powered data analysis and insight generation from datasets.</p>
+          <p data-i18n="perk-exoid-desc">Accesso gratuito alla piattaforma. Analisi dati e generazione insight con AI da dataset.</p>
           <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-            <strong style="font-size: 0.875rem;">How to claim:</strong>
-            <p style="margin-top: 0.5rem; font-size: 0.875rem;">Exoid is free to use. Just visit <a href="https://exoid.com" target="_blank" rel="noopener">exoid.com</a> and start building.</p>
+            <strong style="font-size: 0.875rem;" data-i18n="how-to-claim-3">Come riscattare:</strong>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem;" data-i18n="perk-exoid-claim">Exoid &egrave; gratuito. Vai su <a href="https://exoid.com" target="_blank" rel="noopener">exoid.com</a> e inizia a costruire.</p>
           </div>
         </div>
       </div>
@@ -1365,28 +1403,28 @@
   <!-- Prizes -->
   <section id="prizes" class="alt">
     <div class="container">
-      <span class="label">Prizes</span>
-      <h2>For the winners</h2>
+      <span class="label" data-i18n="prizes-label">Premi</span>
+      <h2 data-i18n="prizes-h2">Per i vincitori</h2>
       <div class="cards-grid">
         <div class="prize-card featured">
-          <span class="card-badge badge-winner">Winner</span>
-          <h3>1 Year Urbe Hub Membership</h3>
-          <p>Full access to Rome's builder hub for 12 months. Coworking, events, and community for every member of the winning team.</p>
+          <span class="card-badge badge-winner" data-i18n="badge-winner">Vincitore</span>
+          <h3 data-i18n="prize-membership-title">1 Anno di Membership Urbe Hub</h3>
+          <p data-i18n="prize-membership-desc">Accesso completo all'hub dei builder di Roma per 12 mesi. Coworking, eventi e community per ogni membro del team vincitore.</p>
         </div>
         <div class="prize-card">
-          <span class="card-badge badge-winner">Winner</span>
+          <span class="card-badge badge-winner" data-i18n="badge-winner-2">Vincitore</span>
           <h3>ElevenLabs Pro</h3>
-          <p>3 months Pro ($297/person). Upgraded voice AI for the winning team, on top of the base perk.</p>
+          <p data-i18n="prize-elevenlabs-pro-desc">3 mesi Pro ($297/persona). Voice AI avanzata per il team vincitore, in aggiunta al perk base.</p>
         </div>
         <div class="prize-card">
-          <span class="card-badge badge-best">Best ElevenLabs Project</span>
+          <span class="card-badge badge-best" data-i18n="badge-best-elevenlabs">Miglior Progetto ElevenLabs</span>
           <h3>ElevenLabs Scale</h3>
-          <p>3 months Scale ($990/person). For the project that makes the best use of ElevenLabs voice AI.</p>
+          <p data-i18n="prize-elevenlabs-scale-desc">3 mesi Scale ($990/persona). Per il progetto che fa il miglior uso della voice AI di ElevenLabs.</p>
         </div>
         <div class="prize-card">
-          <span class="card-badge badge-winner">Winner</span>
+          <span class="card-badge badge-winner" data-i18n="badge-winner-3">Vincitore</span>
           <h3>v0 by Vercel: Extra Credits</h3>
-          <p>Additional credits for the winning team on top of the base perk. Amount confirmed on event day.</p>
+          <p data-i18n="prize-v0-desc">Crediti aggiuntivi per il team vincitore in aggiunta al perk base. Importo confermato il giorno dell'evento.</p>
         </div>
       </div>
     </div>
@@ -1395,35 +1433,35 @@
   <!-- Submission -->
   <section id="submit">
     <div class="container">
-      <span class="label">Submission</span>
-      <h2>What to prepare</h2>
-      <p class="section-intro">Deadline: 16:00 sharp on April 11. Prepare these before you pitch.</p>
+      <span class="label" data-i18n="submit-label">Submission</span>
+      <h2 data-i18n="submit-h2">Cosa preparare</h2>
+      <p class="section-intro" data-i18n="submit-intro">Deadline: ore 16:00 precise, 11 aprile. Prepara tutto questo prima del pitch.</p>
       <ol class="submission-list">
         <li>
           <span class="submission-num">1</span>
-          <span class="submission-text"><strong>GitHub repo</strong> (public, mandatory). All code must be accessible at submission time.</span>
+          <span class="submission-text" data-i18n="submit-item-1"><strong>Repo GitHub</strong> (pubblica, obbligatoria). Tutto il codice deve essere accessibile al momento della submission.</span>
         </li>
         <li>
           <span class="submission-num">2</span>
-          <span class="submission-text"><strong>Recorded video demo</strong> (1 to 2 minutes) -- for post-event publishing. Mandatory.</span>
+          <span class="submission-text" data-i18n="submit-item-2"><strong>Video demo registrata</strong> (da 1 a 2 minuti), per la pubblicazione post-evento. Obbligatoria.</span>
         </li>
         <li>
           <span class="submission-num">3</span>
-          <span class="submission-text"><strong>Live pitch on stage</strong> (1 to 2 minutes) -- separate from the video. This is how the judges evaluate you.</span>
+          <span class="submission-text" data-i18n="submit-item-3"><strong>Pitch live sul palco</strong> (da 1 a 2 minuti), separato dal video. &Egrave; cos&igrave; che la giuria vi valuta.</span>
         </li>
         <li>
           <span class="submission-num">4</span>
-          <span class="submission-text"><strong>Submission form</strong>. <a href="https://forms.gle/6KJuyYJm8FfwEKpY6" target="_blank" rel="noopener">forms.gle/6KJuyYJm8FfwEKpY6</a></span>
+          <span class="submission-text" data-i18n="submit-item-4"><strong>Form di submission</strong>. <a href="https://forms.gle/6KJuyYJm8FfwEKpY6" target="_blank" rel="noopener">forms.gle/6KJuyYJm8FfwEKpY6</a></span>
         </li>
       </ol>
       <div style="margin-top: 28px; background: var(--card-alt); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px;">
-        <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 6px;">Use the submission assistant</p>
-        <p style="font-size: 0.88rem; color: var(--muted); line-height: 1.6;">Drop <code style="background: var(--border); padding: 1px 6px; border-radius: 4px; font-size: 0.85rem;">agentic-hack-submit.md</code> into your project and tell your AI: <em>"help me prepare the submission"</em>. It scans your project, fills every field, and opens a copy-paste page in your browser. Works with Claude Code, Cursor, Windsurf, and any AI that reads markdown.</p>
-        <p style="font-size: 0.85rem; margin-top: 8px;"><a href="https://raw.githubusercontent.com/WERsrl/agentic-hack-rome/main/agentic-hack-submit.md" target="_blank" rel="noopener" style="color: var(--green); font-weight: 500;">Download agentic-hack-submit.md</a> or clone the <a href="https://github.com/WERsrl/agentic-hack-rome" target="_blank" rel="noopener" style="color: var(--green);">repo</a>.</p>
+        <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 6px;" data-i18n="submit-assistant-title">Usa l'assistente alla submission</p>
+        <p style="font-size: 0.88rem; color: var(--muted); line-height: 1.6;" data-i18n="submit-assistant-desc">Metti <code style="background: var(--border); padding: 1px 6px; border-radius: 4px; font-size: 0.85rem;">agentic-hack-submit.md</code> nel tuo progetto e d&igrave; alla tua AI: <em>"aiutami a preparare la submission"</em>. Scansiona il progetto, compila ogni campo e apre una pagina con pulsanti copia-incolla nel browser. Funziona con Claude Code, Cursor, Windsurf e qualsiasi AI che legge markdown.</p>
+        <p style="font-size: 0.85rem; margin-top: 8px;" data-i18n="submit-assistant-download"><a href="https://raw.githubusercontent.com/WERsrl/agentic-hack-rome/main/agentic-hack-submit.md" target="_blank" rel="noopener" style="color: var(--green); font-weight: 500;">Scarica agentic-hack-submit.md</a> or clone the <a href="https://github.com/WERsrl/agentic-hack-rome" target="_blank" rel="noopener" style="color: var(--green);">repo</a>.</p>
       </div>
       <div class="deadline-box" style="margin-top: 16px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Deadline: 16:00 sharp, April 11
+        <span data-i18n="deadline-text">Deadline: ore 16:00 precise, 11 aprile</span>
       </div>
     </div>
   </section>
@@ -1431,30 +1469,30 @@
   <!-- Agent Layer -->
   <section class="agent-section">
     <div class="container">
-      <span class="label" style="color: var(--green);">The Agent Layer</span>
+      <span class="label" style="color: var(--green);" data-i18n="agent-label">Il Livello Agente</span>
       <div class="agent-box">
-        <h2>Your AI is invited too.</h2>
-        <p class="agent-subtitle">This documentation was designed for AI agents. Drop one file into your project and your AI coding assistant becomes your hackathon teammate.</p>
+        <h2 data-i18n="agent-h2">Anche la tua AI &egrave; invitata.</h2>
+        <p class="agent-subtitle" data-i18n="agent-subtitle">Questa documentazione &egrave; stata progettata per agenti AI. Metti un file nel tuo progetto e il tuo assistente AI diventa il tuo compagno di hackathon.</p>
 
         <div class="step-label">For Claude Code / Windsurf</div>
-        <pre class="code-block"><span class="comment"># Clone the repo</span>
+        <pre class="code-block"><span class="comment" data-i18n="agent-comment-1"># Clona la repo</span>
 git clone https://github.com/WERsrl/agentic-hack-rome
 
-<span class="comment"># Copy into your project</span>
+<span class="comment" data-i18n="agent-comment-2"># Copia nel tuo progetto</span>
 cp agentic-hack-rome/CLAUDE.md your-project/CLAUDE.md
 
-<span class="comment"># Start building. Your AI knows everything.</span></pre>
+<span class="comment" data-i18n="agent-comment-3"># Inizia a costruire. La tua AI sa tutto.</span></pre>
 
         <p class="cursor-note">For Cursor: <code style="color:var(--green)">cp agentic-hack-rome/.cursorrules your-project/.cursorrules</code></p>
         <p class="cursor-note" style="margin-top:10px;">Repo: <a href="https://github.com/WERsrl/agentic-hack-rome" target="_blank" rel="noopener" style="color:var(--green)">github.com/WERsrl/agentic-hack-rome</a></p>
 
         <div class="agent-caps">
-          <h3>What your AI can then do:</h3>
+          <h3 data-i18n="agent-caps-title">Cosa pu&ograve; fare la tua AI:</h3>
           <ul>
-            <li>Help you understand the tracks and pick a direction</li>
-            <li>Suggest project ideas with relevant APIs and datasets</li>
-            <li>Review your project against the judging criteria</li>
-            <li>Help you prepare and structure your submission</li>
+            <li data-i18n="agent-cap-1">Aiutarti a capire le tracce e scegliere una direzione</li>
+            <li data-i18n="agent-cap-2">Suggerire idee di progetto con API e dataset pertinenti</li>
+            <li data-i18n="agent-cap-3">Verificare il tuo progetto rispetto ai criteri di giuria</li>
+            <li data-i18n="agent-cap-4">Aiutarti a preparare e strutturare la submission</li>
           </ul>
         </div>
       </div>
@@ -1464,37 +1502,37 @@ cp agentic-hack-rome/CLAUDE.md your-project/CLAUDE.md
   <!-- Logistics -->
   <section id="logistics" class="alt">
     <div class="container">
-      <span class="label">Logistics</span>
-      <h2>Getting there</h2>
+      <span class="label" data-i18n="logistics-label">Logistica</span>
+      <h2 data-i18n="logistics-h2">Come arrivare</h2>
       <div class="logistics-grid">
         <div class="logistics-card">
           <div class="logistics-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <h3>Venue</h3>
+          <h3 data-i18n="logistics-venue-title">Sede</h3>
           <p>Urbe Hub @ Citta dell'Altreconomia<br>Largo Dino Frisullo, Testaccio, Rome</p>
-          <a href="https://maps.google.com/?q=Citta+dell'Altreconomia+Roma" target="_blank" rel="noopener">Open in Maps &rarr;</a>
+          <a href="https://maps.google.com/?q=Citta+dell'Altreconomia+Roma" target="_blank" rel="noopener" data-i18n="logistics-venue-link">Apri in Maps &rarr;</a>
         </div>
         <div class="logistics-card">
           <div class="logistics-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
           </div>
-          <h3>Lunch</h3>
-          <p>Provided during hacking hours. Focus on building, not food logistics.</p>
+          <h3 data-i18n="logistics-lunch-title">Pranzo</h3>
+          <p data-i18n="logistics-lunch-desc">Incluso durante le ore di hacking. Concentrati sul progetto, non sulla logistica del cibo.</p>
         </div>
         <div class="logistics-card">
           <div class="logistics-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
-          <h3>What to bring</h3>
-          <p>Laptop, charger, headphones. Everything else is covered.</p>
+          <h3 data-i18n="logistics-bring-title">Cosa portare</h3>
+          <p data-i18n="logistics-bring-desc">Laptop, caricatore, cuffie. Al resto pensiamo noi.</p>
         </div>
         <div class="logistics-card">
           <div class="logistics-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
           </div>
           <h3>Wifi</h3>
-          <p>Network and password provided on arrival.</p>
+          <p data-i18n="logistics-wifi-desc">Rete e password comunicati all'arrivo.</p>
         </div>
       </div>
     </div>
@@ -1502,7 +1540,7 @@ cp agentic-hack-rome/CLAUDE.md your-project/CLAUDE.md
 
   <!-- Footer -->
   <footer>
-    <p class="footer-brand">Built for builders. <span>Urbe Hub</span></p>
+    <p class="footer-brand"><span data-i18n="footer-text">Fatto per i builder.</span> <span>Urbe Hub</span></p>
     <a href="https://urbe.build" target="_blank" rel="noopener">urbe.build</a>
   </footer>
 
@@ -1555,6 +1593,380 @@ cp agentic-hack-rome/CLAUDE.md your-project/CLAUDE.md
     }, { rootMargin: '-50% 0px -50% 0px' });
 
     sections.forEach(s => observer.observe(s));
+
+    // ── Language Toggle ──
+    const translations = {
+      it: {
+        'meta-description': '50 builder. 5 ore. Agenti AI per Roma. Hackathon di un giorno a Urbe Hub, 11 aprile 2026.',
+        'nav-schedule': 'Programma',
+        'nav-tracks': 'Tracce',
+        'nav-rules': 'Regole',
+        'nav-mentors': 'Mentor',
+        'nav-perks': 'Vantaggi',
+        'nav-prizes': 'Premi',
+        'nav-submit': 'Invia',
+        'hero-eyebrow': '11 Aprile 2026 &nbsp;&middot;&nbsp; Urbe Hub, Testaccio, Roma',
+        'hero-tagline': '50 builder. 5 ore. Costruisci per Roma.',
+        'hero-meta': 'Agenti AI che risolvono problemi reali per la citt\u00e0 e chi ci vive.',
+        'hero-btn-primary': 'Scopri le tracce',
+        'hero-btn-ghost': 'Come inviare &rarr;',
+        'schedule-label': 'Programma',
+        'schedule-h2': 'Come si svolge la giornata',
+        'schedule-1': 'Apertura porte',
+        'schedule-2': 'Apertura e briefing',
+        'schedule-3': 'Si parte! (5 ore)',
+        'schedule-4': 'Pitch dei progetti (fino alle 17:30)',
+        'schedule-5': 'Premiazione e aperitivo',
+        'tracks-label': 'Tracce',
+        'tracks-h2': 'Ispirazione, non vincoli.',
+        'tracks-intro': 'Non devi per forza seguire queste tracce. Costruisci quello che vuoi, purch\u00e9 sia davvero utile per Roma e chi ci vive. Le tracce sono punti di partenza: problemi reali, dataset, idee di esempio. Usale se ti ispirano.',
+        'tracks-banner': '<strong>L\'unica cosa che conta:</strong> costruisci qualcosa che migliori la vita delle persone in questa citt\u00e0. Clicca su una traccia per esplorare problemi, idee e API.',
+        'track-muoviti-sub': 'Mobilit\u00e0: trasporti, infrastrutture, flussi urbani',
+        'track-muoviti-problem': 'Il trasporto pubblico di Roma \u00e8 inaffidabile e difficile da navigare per i pendolari, e il problema va pi\u00f9 in profondit\u00e0. ATAC, l\'azienda dei trasporti di Roma, gestisce una grande flotta con visibilit\u00e0 incompleta. L\'evasione tariffaria drena entrate dal sistema metro. I guasti alle infrastrutture sono gestiti in modo reattivo, non predittivo. Capire come le persone si muovono realmente nella citt\u00e0 richiede ancora indagini costose e lente. L\'AI pu\u00f2 cambiare tutto questo da entrambi i lati: per il passeggero che naviga il sistema e per gli operatori che lo gestiscono.',
+        'track-muoviti-good': 'Un agente che monitora lo stato dei trasporti per i pendolari e suggerisce alternative in tempo reale, oppure che offre ad ATAC e agli operatori della citt\u00e0 una visibilit\u00e0 pi\u00f9 precisa. Dove si evade la tariffa, quale infrastruttura sta per guastarsi, come le persone si muovono davvero a Roma.',
+        'track-muoviti-ideas-passenger-label': 'Idee di esempio: lato passeggero',
+        'track-muoviti-idea-p1': 'Un agente che monitora il tuo percorso giornaliero e ti avvisa prima delle interruzioni, suggerendo alternative in tempo reale',
+        'track-muoviti-idea-p2': 'Un agente di rilevamento disservizi che aggrega dati ATAC, segnalazioni sui social e notizie per costruire una mappa di affidabilit\u00e0 in tempo reale',
+        'track-muoviti-idea-p3': 'Un agente che ottimizza percorsi multimodali (bus + metro + monopattino) basandosi sulle condizioni attuali, non solo sugli orari',
+        'track-muoviti-ideas-operator-label': 'Idee di esempio: lato operatore',
+        'track-muoviti-idea-o1': 'Un agente di rilevamento dell\'evasione tariffaria che analizza i pattern di validazione nelle stazioni metro e sulle linee bus per segnalare luoghi e fasce orarie ad alto rischio <span class="city-priority" data-i18n="city-priority-muoviti-o1">priorit\u00e0 citt\u00e0</span>',
+        'track-muoviti-idea-o2': 'Un agente di manutenzione predittiva che modella la probabilit\u00e0 di guasto per autobus e infrastrutture metro a partire da dati storici e log di servizio <span class="city-priority" data-i18n="city-priority-muoviti-o2">priorit\u00e0 citt\u00e0</span>',
+        'track-muoviti-idea-o3': 'Un agente di stima Origine-Destinazione che ricostruisce come le persone si muovono realmente a Roma usando dati GTFS e topologia della rete <span class="city-priority" data-i18n="city-priority-muoviti-o3">priorit\u00e0 citt\u00e0</span>',
+        'city-priority-muoviti-o1': 'priorit\u00e0 citt\u00e0',
+        'city-priority-muoviti-o2': 'priorit\u00e0 citt\u00e0',
+        'city-priority-muoviti-o3': 'priorit\u00e0 citt\u00e0',
+        'track-muoviti-apis-label': 'API e Dataset',
+        'track-naviga-sub': 'Turismo: patrimonio culturale, esperienze, logistica',
+        'track-naviga-problem': 'Roma ha uno dei patrimoni culturali pi\u00f9 ricchi al mondo, ma navigarlo \u00e8 un caos. Le informazioni turistiche sono frammentate, i sistemi di biglietteria sono separati per ogni luogo, e la maggior parte dei visitatori segue gli stessi percorsi sovraffollati mentre le perle nascoste restano invisibili. Nessuno strumento capisce i tuoi interessi e agisce di conseguenza.',
+        'track-naviga-good': 'Un agente che sa cosa ti interessa, consiglia esperienze che ti piacerebbero davvero e gestisce la logistica: prenotare biglietti, suggerire orari per evitare la folla, costruire un itinerario personalizzato che va oltre l\'ovvio.',
+        'track-naviga-ideas-label': 'Idee di esempio',
+        'track-naviga-idea-1': 'Un agente concierge culturale personale che impara i tuoi interessi, suggerisce esperienze nascoste di Roma e prenota biglietti per te',
+        'track-naviga-idea-2': 'Un agente che monitora la disponibilit\u00e0 dei biglietti per i siti pi\u00f9 richiesti (Colosseo, Vaticano, Borghese) e prenota automaticamente quando si aprono posti',
+        'track-naviga-idea-3': 'Un agente di scoperta dei quartieri che costruisce tour a piedi basati sui tuoi interessi (street art, rovine antiche, mercati, architettura)',
+        'track-naviga-apis-label': 'API e Dataset',
+        'track-sbriga-sub': 'Burocrazia: ponte cittadino-PA, documenti, appuntamenti',
+        'track-sbriga-problem': 'Avere a che fare con la pubblica amministrazione di Roma \u00e8 doloroso. Operazioni semplici (cambio di residenza, richieste di permessi, rinnovo documenti) richiedono di navigare decine di siti, scaricare i moduli sbagliati, chiamare uffici che non rispondono e prenotare appuntamenti con mesi di anticipo. I cittadini perdono giorni per cose che dovrebbero richiedere minuti.',
+        'track-sbriga-good': 'Un agente che capisce di cosa hai bisogno, trova la procedura corretta, prepara i documenti giusti e prenota l\'appuntamento per te. Un ponte tra il cittadino e la PA che funziona davvero.',
+        'track-sbriga-ideas-label': 'Idee di esempio',
+        'track-sbriga-idea-1': 'Un agente navigatore della PA: descrivi ci\u00f2 di cui hai bisogno in italiano semplice e identifica la procedura corretta, i documenti necessari e l\'ufficio giusto <span class="city-priority" data-i18n="city-priority-sbriga-1">priorit\u00e0 citt\u00e0</span>',
+        'track-sbriga-idea-2': 'Un agente di preparazione documenti che compila moduli (autocertificazioni, richieste) con i tuoi dati personali e li controlla prima dell\'invio',
+        'track-sbriga-idea-3': 'Un agente di prenotazione appuntamenti che monitora il sistema di prenotazione di Roma Capitale e prende i posti quando si liberano',
+        'track-sbriga-idea-4': 'Un agente di smistamento documenti per un ufficio PA: legge i documenti in arrivo, estrae metadati strutturati, li classifica per tipo e urgenza e li inoltra all\'ufficio e al flusso di lavoro giusto, eliminando lo smistamento manuale <span class="city-priority" data-i18n="city-priority-sbriga-4">priorit\u00e0 citt\u00e0</span>',
+        'city-priority-sbriga-1': 'priorit\u00e0 citt\u00e0',
+        'city-priority-sbriga-4': 'priorit\u00e0 citt\u00e0',
+        'track-sbriga-apis-label': 'API e Dataset',
+        'track-vivi-sub': 'Quartieri: vita di municipio, sapere locale, comunit\u00e0',
+        'track-vivi-problem': 'I quartieri di Roma (municipi) hanno identit\u00e0 e bisogni distinti, ma nessuna infrastruttura digitale che li supporti. I problemi degli spazi pubblici non vengono segnalati, le piccole attivit\u00e0 non possono competere con le piattaforme, e il sapere della comunit\u00e0 vive in gruppi WhatsApp a cui i nuovi arrivati non possono accedere.',
+        'track-vivi-good': 'Un agente a livello di quartiere che collega i residenti al loro municipio. Segnalare problemi, scoprire attivit\u00e0 locali, accedere al sapere della comunit\u00e0 e far funzionare meglio il quartiere per tutti.',
+        'track-vivi-ideas-label': 'Idee di esempio',
+        'track-vivi-idea-1': 'Un agente di segnalazione quartiere: scatta una foto di una buca, un lampione rotto o un cassonetto pieno e l\'agente invia la segnalazione all\'ufficio municipale giusto',
+        'track-vivi-idea-2': 'Un agente di scoperta attivit\u00e0 locali per un quartiere specifico: trova negozi, ristoranti, artigiani in base a ci\u00f2 di cui hai bisogno, con il sapere reale della comunit\u00e0',
+        'track-vivi-idea-3': 'Un agente del sapere comunitario che aggrega informazioni locali (orari dei mercati, turni delle farmacie, orari degli uffici municipali) e risponde a domande sul tuo quartiere',
+        'track-vivi-idea-4': 'Un agente di comportamento civico che premia i residenti per azioni virtuose (prendere il bus, fare una segnalazione rifiuti, comprare nei negozi locali) con punti, riconoscimento di quartiere o sconti dalle attivit\u00e0 locali <span class="city-priority" data-i18n="city-priority-vivi-4">priorit\u00e0 citt\u00e0</span>',
+        'city-priority-vivi-4': 'priorit\u00e0 citt\u00e0',
+        'track-vivi-apis-label': 'API e Dataset',
+        'rules-label': 'Regole',
+        'rules-h2': 'Gioco pulito',
+        'rule-1-title': 'Team da 1 a 3',
+        'rule-1-desc': 'Si pu\u00f2 partecipare da soli. Massimo 3 persone per team.',
+        'rule-2-title': 'Solo progetti nuovi',
+        'rule-2-desc': 'Idee preesistenti OK. Codice preesistente no.',
+        'rule-3-title': '5 ore per costruire',
+        'rule-3-desc': 'Dalle 11:00 alle 16:00. Pranzo incluso.',
+        'rule-4-title': 'Deve usare AI e tool agentici',
+        'rule-4-desc': 'In qualsiasi forma: tool calling, orchestrazione, task autonomi.',
+        'rule-5-title': 'Utile per Roma',
+        'rule-5-desc': 'L\'unico vincolo che conta davvero.',
+        'rule-6-title': 'Repo GitHub pubblica',
+        'rule-6-desc': 'Obbligatoria e accessibile al momento della submission.',
+        'rule-7-title': 'Video demo obbligatorio',
+        'rule-7-desc': 'Da 1 a 2 minuti, registrato, inviato con il progetto.',
+        'judging-label': 'Giuria',
+        'judging-h2': 'Tre pilastri, stesso peso',
+        'judging-intro': 'Usa questo come checklist prima di presentare il tuo progetto.',
+        'judging-card-1-title': 'Idea e Impatto',
+        'judging-card-1-li-1': '\u00c8 davvero utile per Roma e chi ci vive?',
+        'judging-card-1-li-2': 'Il problema \u00e8 specifico e concreto (non generico)?',
+        'judging-card-1-li-3': 'Persone o istituzioni reali lo userebbero davvero?',
+        'judging-card-2-title': 'Esecuzione Tecnica',
+        'judging-card-2-li-1': 'Uso intelligente di agenti AI, tool calling, API',
+        'judging-card-2-li-2': 'Il pensiero architetturale conta pi\u00f9 del codice rifinito (sono 5 ore)',
+        'judging-card-2-li-3': 'Buona integrazione di tool e dataset disponibili',
+        'judging-card-3-title': 'Prontezza della Demo',
+        'judging-card-3-li-1': 'Riesci a dimostrare un flusso funzionante end-to-end?',
+        'judging-card-3-li-2': 'Un MVP che funziona batte un concept che crasha',
+        'judging-card-3-li-3': 'La demo \u00e8 chiara e comprensibile in meno di 2 minuti?',
+        'mentors-label': 'Mentor',
+        'mentors-h2': 'On-site durante le ore di building',
+        'mentors-intro': 'Trovali tra le 11:00 e le 16:00 per un check tecnico, feedback sull\'architettura o per mettere alla prova la tua idea.',
+        'perks-label': 'Vantaggi',
+        'perks-h2': 'Per ogni partecipante',
+        'perks-intro': 'Questi sono tuoi il giorno dell\'evento, indipendentemente dal risultato. Strumenti per costruire pi\u00f9 velocemente e meglio.',
+        'badge-all': 'Tutti i Partecipanti',
+        'badge-all-2': 'Tutti i Partecipanti',
+        'badge-all-3': 'Tutti i Partecipanti',
+        'perk-elevenlabs-desc': '1 mese gratuito (valore $22). Voice AI per i tuoi agenti: text-to-speech, voice cloning, interfacce conversazionali.',
+        'how-to-claim': 'Come riscattare:',
+        'perk-elevenlabs-step-1': 'Entra nel <a href="https://discord.com/invite/VnBvbbcdEC" target="_blank" rel="noopener">Discord di ElevenLabs</a>',
+        'perk-elevenlabs-step-2': 'Vai al canale <strong>#coupon-codes</strong>',
+        'perk-elevenlabs-step-3': 'Clicca "Start Redemption"',
+        'perk-elevenlabs-step-4': 'Seleziona <strong>Agentic Hack Rome</strong> come evento',
+        'perk-elevenlabs-step-5': 'Inserisci l\'email usata per registrarti su Lu.ma',
+        'perk-elevenlabs-step-6': 'Il bot ti invia un codice coupon unico',
+        'perk-elevenlabs-tutorial': '<a href="https://youtu.be/S143_JtCtV8" target="_blank" rel="noopener">Guarda il video tutorial</a>',
+        'how-to-claim-2': 'Come riscattare:',
+        'perk-v0-desc': '$30 di crediti gratuiti. Generazione UI con AI per prototipare rapidamente interfacce React e Next.js.',
+        'perk-v0-step-1': 'Vai su <a href="https://v0.dev" target="_blank" rel="noopener">v0.dev</a>',
+        'perk-v0-step-2': 'Accedi o crea un account',
+        'perk-v0-step-3': 'Riscatta il codice promo inviato alla tua email (quella usata per registrarti su Lu.ma)',
+        'perk-v0-expire': 'I crediti scadono una settimana dopo il riscatto.',
+        'how-to-claim-3': 'Come riscattare:',
+        'perk-exoid-desc': 'Accesso gratuito alla piattaforma. Analisi dati e generazione insight con AI da dataset.',
+        'perk-exoid-claim': 'Exoid \u00e8 gratuito. Vai su <a href="https://exoid.com" target="_blank" rel="noopener">exoid.com</a> e inizia a costruire.',
+        'prizes-label': 'Premi',
+        'prizes-h2': 'Per i vincitori',
+        'badge-winner': 'Vincitore',
+        'badge-winner-2': 'Vincitore',
+        'badge-winner-3': 'Vincitore',
+        'badge-best-elevenlabs': 'Miglior Progetto ElevenLabs',
+        'prize-membership-title': '1 Anno di Membership Urbe Hub',
+        'prize-membership-desc': 'Accesso completo all\'hub dei builder di Roma per 12 mesi. Coworking, eventi e community per ogni membro del team vincitore.',
+        'prize-elevenlabs-pro-desc': '3 mesi Pro ($297/persona). Voice AI avanzata per il team vincitore, in aggiunta al perk base.',
+        'prize-elevenlabs-scale-desc': '3 mesi Scale ($990/persona). Per il progetto che fa il miglior uso della voice AI di ElevenLabs.',
+        'prize-v0-desc': 'Crediti aggiuntivi per il team vincitore in aggiunta al perk base. Importo confermato il giorno dell\'evento.',
+        'submit-label': 'Submission',
+        'submit-h2': 'Cosa preparare',
+        'submit-intro': 'Deadline: ore 16:00 precise, 11 aprile. Prepara tutto questo prima del pitch.',
+        'submit-item-1': '<strong>Repo GitHub</strong> (pubblica, obbligatoria). Tutto il codice deve essere accessibile al momento della submission.',
+        'submit-item-2': '<strong>Video demo registrata</strong> (da 1 a 2 minuti), per la pubblicazione post-evento. Obbligatoria.',
+        'submit-item-3': '<strong>Pitch live sul palco</strong> (da 1 a 2 minuti), separato dal video. \u00c8 cos\u00ec che la giuria vi valuta.',
+        'submit-item-4': '<strong>Form di submission</strong>. <a href="https://forms.gle/6KJuyYJm8FfwEKpY6" target="_blank" rel="noopener">forms.gle/6KJuyYJm8FfwEKpY6</a>',
+        'submit-assistant-title': 'Usa l\'assistente alla submission',
+        'submit-assistant-desc': 'Metti <code style="background: var(--border); padding: 1px 6px; border-radius: 4px; font-size: 0.85rem;">agentic-hack-submit.md</code> nel tuo progetto e d\u00ec alla tua AI: <em>"aiutami a preparare la submission"</em>. Scansiona il progetto, compila ogni campo e apre una pagina con pulsanti copia-incolla nel browser. Funziona con Claude Code, Cursor, Windsurf e qualsiasi AI che legge markdown.',
+        'submit-assistant-download': '<a href="https://raw.githubusercontent.com/WERsrl/agentic-hack-rome/main/agentic-hack-submit.md" target="_blank" rel="noopener" style="color: var(--green); font-weight: 500;">Scarica agentic-hack-submit.md</a> o clona la <a href="https://github.com/WERsrl/agentic-hack-rome" target="_blank" rel="noopener" style="color: var(--green);">repo</a>.',
+        'deadline-text': 'Deadline: ore 16:00 precise, 11 aprile',
+        'agent-label': 'Il Livello Agente',
+        'agent-h2': 'Anche la tua AI \u00e8 invitata.',
+        'agent-subtitle': 'Questa documentazione \u00e8 stata progettata per agenti AI. Metti un file nel tuo progetto e il tuo assistente AI diventa il tuo compagno di hackathon.',
+        'agent-comment-1': '# Clona la repo',
+        'agent-comment-2': '# Copia nel tuo progetto',
+        'agent-comment-3': '# Inizia a costruire. La tua AI sa tutto.',
+        'agent-caps-title': 'Cosa pu\u00f2 fare la tua AI:',
+        'agent-cap-1': 'Aiutarti a capire le tracce e scegliere una direzione',
+        'agent-cap-2': 'Suggerire idee di progetto con API e dataset pertinenti',
+        'agent-cap-3': 'Verificare il tuo progetto rispetto ai criteri di giuria',
+        'agent-cap-4': 'Aiutarti a preparare e strutturare la submission',
+        'logistics-label': 'Logistica',
+        'logistics-h2': 'Come arrivare',
+        'logistics-venue-title': 'Sede',
+        'logistics-venue-link': 'Apri in Maps &rarr;',
+        'logistics-lunch-title': 'Pranzo',
+        'logistics-lunch-desc': 'Incluso durante le ore di hacking. Concentrati sul progetto, non sulla logistica del cibo.',
+        'logistics-bring-title': 'Cosa portare',
+        'logistics-bring-desc': 'Laptop, caricatore, cuffie. Al resto pensiamo noi.',
+        'logistics-wifi-desc': 'Rete e password comunicati all\'arrivo.',
+        'footer-text': 'Fatto per i builder.'
+      },
+      en: {
+        'meta-description': '50 builders. 5 hours. AI agents for Rome. One-day hackathon at Urbe Hub, April 11, 2026.',
+        'nav-schedule': 'Schedule',
+        'nav-tracks': 'Tracks',
+        'nav-rules': 'Rules',
+        'nav-mentors': 'Mentors',
+        'nav-perks': 'Perks',
+        'nav-prizes': 'Prizes',
+        'nav-submit': 'Submit',
+        'hero-eyebrow': 'April 11, 2026 &nbsp;&middot;&nbsp; Urbe Hub, Testaccio, Rome',
+        'hero-tagline': '50 builders. 5 hours. Build for Rome.',
+        'hero-meta': 'AI agents that solve real problems for the city and the people who live here.',
+        'hero-btn-primary': 'See the tracks',
+        'hero-btn-ghost': 'How to submit &rarr;',
+        'schedule-label': 'Schedule',
+        'schedule-h2': 'How the day goes',
+        'schedule-1': 'Doors open',
+        'schedule-2': 'Opening and briefing',
+        'schedule-3': 'Hacking starts (5 hours)',
+        'schedule-4': 'Project pitches (until 17:30)',
+        'schedule-5': 'Awards & Aperitivo',
+        'tracks-label': 'Challenge Tracks',
+        'tracks-h2': 'Inspiration, not constraints.',
+        'tracks-intro': 'You don\'t have to follow these tracks. Build whatever you want, as long as it is genuinely useful for Rome and the people who live here. The tracks are starting points: real problems, datasets, example ideas. Use them if they spark something.',
+        'tracks-banner': '<strong>The one thing that matters:</strong> build something that makes life better for people in this city. Click a track to explore problems, ideas, and APIs.',
+        'track-muoviti-sub': 'Mobility: transport, infrastructure, urban flow',
+        'track-muoviti-problem': 'Rome\'s public transport is unreliable and hard to navigate for commuters, and the challenge runs deeper. ATAC, Rome\'s transport authority, manages a large fleet with incomplete visibility. Fare evasion drains revenue across the metro system. Infrastructure failures are reactive, not predicted. Understanding how people actually move through the city still requires expensive, slow surveys. AI can change this from both ends: for the passenger navigating the system and for the operators running it.',
+        'track-muoviti-good': 'What good looks like: an agent that either monitors transport status for commuters and suggests real-time alternatives, or gives ATAC and city operators sharper visibility. Where fares are being evaded, what infrastructure is about to fail, how people actually move through Rome.',
+        'track-muoviti-ideas-passenger-label': 'Example ideas: passenger-facing',
+        'track-muoviti-idea-p1': 'An agent that monitors your daily commute route and alerts you before disruptions happen, suggesting real-time alternatives',
+        'track-muoviti-idea-p2': 'A disruption detection agent that aggregates ATAC data, social media reports, and news to build a real-time reliability map',
+        'track-muoviti-idea-p3': 'An agent that optimizes multi-modal routes (bus + metro + scooter) based on live conditions, not just schedules',
+        'track-muoviti-ideas-operator-label': 'Example ideas: operator-facing',
+        'track-muoviti-idea-o1': 'A fare evasion detection agent that analyzes validation patterns across metro stations and bus lines to flag high-risk locations and time windows <span class="city-priority" data-i18n="city-priority-muoviti-o1">city priority</span>',
+        'track-muoviti-idea-o2': 'A predictive maintenance agent that models failure probability for buses and metro infrastructure from historical breakdown data and service logs <span class="city-priority" data-i18n="city-priority-muoviti-o2">city priority</span>',
+        'track-muoviti-idea-o3': 'An Origin-Destination estimation agent that reconstructs how people actually move through Rome using GTFS data and network topology <span class="city-priority" data-i18n="city-priority-muoviti-o3">city priority</span>',
+        'city-priority-muoviti-o1': 'city priority',
+        'city-priority-muoviti-o2': 'city priority',
+        'city-priority-muoviti-o3': 'city priority',
+        'track-muoviti-apis-label': 'APIs & Datasets',
+        'track-naviga-sub': 'Tourism: cultural heritage, experiences, logistics',
+        'track-naviga-problem': 'Rome has one of the richest cultural heritages in the world, but navigating it is a mess. Tourist info is fragmented, ticket systems are separate for every venue, and most visitors follow the same overcrowded paths while hidden gems go unseen. No tool understands your interests and acts on them.',
+        'track-naviga-good': 'What good looks like: an agent that knows what you care about, recommends experiences you would actually enjoy, and handles the logistics. Booking tickets, suggesting timing to avoid crowds, building a personalized itinerary that goes beyond the obvious.',
+        'track-naviga-ideas-label': 'Example ideas',
+        'track-naviga-idea-1': 'A personal cultural concierge agent that learns your interests, suggests hidden Rome experiences, and books tickets for you',
+        'track-naviga-idea-2': 'An agent that monitors ticket availability for popular sites (Colosseum, Vatican, Borghese) and auto-books when slots open',
+        'track-naviga-idea-3': 'A neighborhood discovery agent that builds walking tours based on your interests (street art, ancient ruins, food markets, architecture)',
+        'track-naviga-apis-label': 'APIs & Datasets',
+        'track-sbriga-sub': 'Bureaucracy: citizen-PA bridge, documents, appointments',
+        'track-sbriga-problem': 'Dealing with Rome\'s public administration is painful. Simple tasks (residency changes, permit requests, document renewals) require navigating dozens of websites, downloading the wrong forms, calling offices that don\'t answer, and booking appointments months in advance. Citizens waste days on things that should take minutes.',
+        'track-sbriga-good': 'What good looks like: an agent that understands what you need, finds the right procedure, prepares the correct documents, and books the appointment for you. A bridge between the citizen and the PA that actually works.',
+        'track-sbriga-ideas-label': 'Example ideas',
+        'track-sbriga-idea-1': 'A PA navigator agent: describe what you need in plain Italian, and it identifies the correct procedure, required documents, and the right office <span class="city-priority" data-i18n="city-priority-sbriga-1">city priority</span>',
+        'track-sbriga-idea-2': 'A document preparation agent that fills out forms (autocertificazioni, richieste) from your personal data and checks them before submission',
+        'track-sbriga-idea-3': 'An appointment booking agent that monitors Roma Capitale\'s booking system and grabs slots when they open',
+        'track-sbriga-idea-4': 'A document intake agent for a PA office: reads incoming documents, extracts structured metadata, classifies them by type and urgency, and routes them to the right office and workflow, removing manual sorting entirely <span class="city-priority" data-i18n="city-priority-sbriga-4">city priority</span>',
+        'city-priority-sbriga-1': 'city priority',
+        'city-priority-sbriga-4': 'city priority',
+        'track-sbriga-apis-label': 'APIs & Datasets',
+        'track-vivi-sub': 'Neighborhoods: district life, local knowledge, community',
+        'track-vivi-problem': 'Rome\'s neighborhoods (municipi) have distinct identities and needs, but no digital infrastructure to support them. Public space issues go unreported, small businesses can\'t compete with platforms, and community knowledge lives in WhatsApp groups that newcomers can\'t access.',
+        'track-vivi-good': 'What good looks like: a district-level agent that connects residents to their neighborhood. Reporting issues, discovering local businesses, accessing community knowledge, and making the neighborhood work better for everyone.',
+        'track-vivi-ideas-label': 'Example ideas',
+        'track-vivi-idea-1': 'A neighborhood reporting agent: snap a photo of a pothole, broken streetlight, or full dumpster, and the agent files the report to the right municipal office',
+        'track-vivi-idea-2': 'A local business discovery agent for a specific neighborhood: finds shops, restaurants, artisans based on what you need, with real community knowledge',
+        'track-vivi-idea-3': 'A community knowledge agent that aggregates local info (market schedules, pharmacy shifts, municipal office hours) and answers questions about your neighborhood',
+        'track-vivi-idea-4': 'A civic behavior agent that rewards residents for virtuous actions (taking the bus, filing a waste report, using local shops) with points, neighborhood recognition, or discounts from local businesses <span class="city-priority" data-i18n="city-priority-vivi-4">city priority</span>',
+        'city-priority-vivi-4': 'city priority',
+        'track-vivi-apis-label': 'APIs & Datasets',
+        'rules-label': 'Rules',
+        'rules-h2': 'Keep it fair',
+        'rule-1-title': 'Teams of 1 to 3',
+        'rule-1-desc': 'Solo is fine. Max 3 people per team.',
+        'rule-2-title': 'New projects only',
+        'rule-2-desc': 'Pre-existing ideas OK. Pre-existing code is not.',
+        'rule-3-title': '5 hours of building',
+        'rule-3-desc': '11:00 to 16:00. Lunch provided.',
+        'rule-4-title': 'Must use AI and agentic tooling',
+        'rule-4-desc': 'In any form: tool calling, orchestration, autonomous tasks.',
+        'rule-5-title': 'Useful for Rome',
+        'rule-5-desc': 'The only constraint that truly matters.',
+        'rule-6-title': 'Public GitHub repo',
+        'rule-6-desc': 'Required and accessible at submission time.',
+        'rule-7-title': 'Video demo required',
+        'rule-7-desc': '1 to 2 minutes, recorded, submitted with the project.',
+        'judging-label': 'Judging',
+        'judging-h2': 'Three pillars, equally weighted',
+        'judging-intro': 'Use this to review your project before you pitch.',
+        'judging-card-1-title': 'Idea & Impact',
+        'judging-card-1-li-1': 'Is it genuinely useful for Rome and the people living here?',
+        'judging-card-1-li-2': 'Is the problem specific and grounded (not generic)?',
+        'judging-card-1-li-3': 'Would real people or institutions actually use this?',
+        'judging-card-2-title': 'Technical Execution',
+        'judging-card-2-li-1': 'Smart use of AI agents, tool calling, APIs',
+        'judging-card-2-li-2': 'Architectural thinking over code polish (it\'s 5 hours)',
+        'judging-card-2-li-3': 'Good integration of available tools and datasets',
+        'judging-card-3-title': 'Demo-readiness',
+        'judging-card-3-li-1': 'Can you demo a working flow end-to-end?',
+        'judging-card-3-li-2': 'An MVP that works beats a concept that crashes',
+        'judging-card-3-li-3': 'Is the demo clear and understandable in under 2 minutes?',
+        'mentors-label': 'Mentors',
+        'mentors-h2': 'On-site during building hours',
+        'mentors-intro': 'Find them between 11:00 and 16:00 for technical sanity checks, architecture feedback, or to pressure-test your idea.',
+        'perks-label': 'Perks',
+        'perks-h2': 'For every participant',
+        'perks-intro': 'These are yours on event day regardless of how you finish. Tools to help you build faster and better.',
+        'badge-all': 'All Participants',
+        'badge-all-2': 'All Participants',
+        'badge-all-3': 'All Participants',
+        'perk-elevenlabs-desc': '1 month free ($22 value). Voice AI for your agents: text-to-speech, voice cloning, conversational interfaces.',
+        'how-to-claim': 'How to claim:',
+        'perk-elevenlabs-step-1': 'Join the <a href="https://discord.com/invite/VnBvbbcdEC" target="_blank" rel="noopener">ElevenLabs Discord</a>',
+        'perk-elevenlabs-step-2': 'Go to the <strong>#coupon-codes</strong> channel',
+        'perk-elevenlabs-step-3': 'Click "Start Redemption"',
+        'perk-elevenlabs-step-4': 'Select <strong>Agentic Hack Rome</strong> as the event',
+        'perk-elevenlabs-step-5': 'Enter the email you used to register on Lu.ma',
+        'perk-elevenlabs-step-6': 'The bot sends you a unique coupon code',
+        'perk-elevenlabs-tutorial': '<a href="https://youtu.be/S143_JtCtV8" target="_blank" rel="noopener">Watch the video tutorial</a>',
+        'how-to-claim-2': 'How to claim:',
+        'perk-v0-desc': '$30 free credits. AI-powered UI generation for rapid prototyping of React and Next.js interfaces.',
+        'perk-v0-step-1': 'Go to <a href="https://v0.dev" target="_blank" rel="noopener">v0.dev</a>',
+        'perk-v0-step-2': 'Sign in or create an account',
+        'perk-v0-step-3': 'Redeem the promo code sent to your email (the one you used to register on Lu.ma)',
+        'perk-v0-expire': 'Credits expire one week after redemption.',
+        'how-to-claim-3': 'How to claim:',
+        'perk-exoid-desc': 'Free platform access. AI-powered data analysis and insight generation from datasets.',
+        'perk-exoid-claim': 'Exoid is free to use. Just visit <a href="https://exoid.com" target="_blank" rel="noopener">exoid.com</a> and start building.',
+        'prizes-label': 'Prizes',
+        'prizes-h2': 'For the winners',
+        'badge-winner': 'Winner',
+        'badge-winner-2': 'Winner',
+        'badge-winner-3': 'Winner',
+        'badge-best-elevenlabs': 'Best ElevenLabs Project',
+        'prize-membership-title': '1 Year Urbe Hub Membership',
+        'prize-membership-desc': 'Full access to Rome\'s builder hub for 12 months. Coworking, events, and community for every member of the winning team.',
+        'prize-elevenlabs-pro-desc': '3 months Pro ($297/person). Upgraded voice AI for the winning team, on top of the base perk.',
+        'prize-elevenlabs-scale-desc': '3 months Scale ($990/person). For the project that makes the best use of ElevenLabs voice AI.',
+        'prize-v0-desc': 'Additional credits for the winning team on top of the base perk. Amount confirmed on event day.',
+        'submit-label': 'Submission',
+        'submit-h2': 'What to prepare',
+        'submit-intro': 'Deadline: 16:00 sharp on April 11. Prepare these before you pitch.',
+        'submit-item-1': '<strong>GitHub repo</strong> (public, mandatory). All code must be accessible at submission time.',
+        'submit-item-2': '<strong>Recorded video demo</strong> (1 to 2 minutes), for post-event publishing. Mandatory.',
+        'submit-item-3': '<strong>Live pitch on stage</strong> (1 to 2 minutes), separate from the video. This is how the judges evaluate you.',
+        'submit-item-4': '<strong>Submission form</strong>. <a href="https://forms.gle/6KJuyYJm8FfwEKpY6" target="_blank" rel="noopener">forms.gle/6KJuyYJm8FfwEKpY6</a>',
+        'submit-assistant-title': 'Use the submission assistant',
+        'submit-assistant-desc': 'Drop <code style="background: var(--border); padding: 1px 6px; border-radius: 4px; font-size: 0.85rem;">agentic-hack-submit.md</code> into your project and tell your AI: <em>"help me prepare the submission"</em>. It scans your project, fills every field, and opens a copy-paste page in your browser. Works with Claude Code, Cursor, Windsurf, and any AI that reads markdown.',
+        'submit-assistant-download': '<a href="https://raw.githubusercontent.com/WERsrl/agentic-hack-rome/main/agentic-hack-submit.md" target="_blank" rel="noopener" style="color: var(--green); font-weight: 500;">Download agentic-hack-submit.md</a> or clone the <a href="https://github.com/WERsrl/agentic-hack-rome" target="_blank" rel="noopener" style="color: var(--green);">repo</a>.',
+        'deadline-text': 'Deadline: 16:00 sharp, April 11',
+        'agent-label': 'The Agent Layer',
+        'agent-h2': 'Your AI is invited too.',
+        'agent-subtitle': 'This documentation was designed for AI agents. Drop one file into your project and your AI coding assistant becomes your hackathon teammate.',
+        'agent-comment-1': '# Clone the repo',
+        'agent-comment-2': '# Copy into your project',
+        'agent-comment-3': '# Start building. Your AI knows everything.',
+        'agent-caps-title': 'What your AI can then do:',
+        'agent-cap-1': 'Help you understand the tracks and pick a direction',
+        'agent-cap-2': 'Suggest project ideas with relevant APIs and datasets',
+        'agent-cap-3': 'Review your project against the judging criteria',
+        'agent-cap-4': 'Help you prepare and structure your submission',
+        'logistics-label': 'Logistics',
+        'logistics-h2': 'Getting there',
+        'logistics-venue-title': 'Venue',
+        'logistics-venue-link': 'Open in Maps &rarr;',
+        'logistics-lunch-title': 'Lunch',
+        'logistics-lunch-desc': 'Provided during hacking hours. Focus on building, not food logistics.',
+        'logistics-bring-title': 'What to bring',
+        'logistics-bring-desc': 'Laptop, charger, headphones. Everything else is covered.',
+        'logistics-wifi-desc': 'Network and password provided on arrival.',
+        'footer-text': 'Built for builders.'
+      }
+    };
+
+    let currentLang = 'it';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.dataset.i18n;
+        if (translations[lang][key] !== undefined) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        var isActive = btn.dataset.lang === lang;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+      });
+      // Update meta
+      var metaDesc = document.querySelector('meta[name="description"]');
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (metaDesc) metaDesc.content = translations[lang]['meta-description'];
+      if (ogDesc) ogDesc.content = translations[lang]['meta-description'];
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() { setLang(btn.dataset.lang); });
+    });
   </script>
 
 </body>
